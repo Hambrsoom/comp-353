@@ -100,10 +100,9 @@ function addPatient() {
     }
     var firstName = document.getElementById("patient-first-name").value;
     var lastName = document.getElementById("patient-last-name").value;
-    var patientID = document.getElementById("patient-id").value;
-    console.log(firstName, lastName, patientID);
-    xmlhttp.open("POST","addPatient.php?firstName="+firstName+"&lastName="+lastName+"&patientId="+patientID,true);
-    xmlhttp.send();
+    xmlhttp.open("POST","addPatient.php?");
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send("firstName="+firstName+"&lastName="+lastName);
 
 }
 
