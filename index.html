@@ -1,31 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
-    <title>COMP353</title>
-</head>
-<body>
-    <h1><a href="#">COMP 353 Main Project</a></h1>
-    <div class="team-information">
-        <p>Greta Avetisian - 40066599</p>
-        <p>Hambrsoom Baboyan - 40054395</p>
-        <p>Trevor Naggessar - 40058857</p>
-        <p>Dang Lam Ha Lara Tran - 40058907</p>
-    </div>
-    <div class="queries-list">
-        <ul>
-            <li class="query"><a href="queries/all-dentists.html">a. Get details of all dentists in all the clinics.</a></li>
-            <li class="query"><a href="queries/all-apps-dentist.html">b. Get details of all appointments for a given dentist for a specific week.</a></li>
-            <li class="query"><a href="queries/all-apps-clinic.html">c. Get details of all appointments at a given clinic on a specific date. </a></li>
-            <li class="query"><a href="queries/all-apps-patient.html">d. Get details of all appointments of a given patient. </a></li>
-            <li class="query"><a href="queries/missed-apps.html">e. Get the number of missed appointments for each patient (only for patients who have
-                missed at least 1 appointment). </a></li>
-            <li class="query"><a href="queries/all-treatments-app.html">f. Get details of all the treatments made during a given appointment. </a></li>
-            <li class="query"><a href="queries/all-unpaid-bills.html">g. Get details of all unpaid bills.  </a></li>
-        </ul>
-    </div>
-</body>
+    <head>
+        <title>COMP 353 Main Project</title>
+        <link
+            href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link rel="stylesheet" type="text/css" href="assets/css/skeleton.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="assets/css/normalize.css"
+        />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="query get-dentists">
+                <h2>a. Get details of all dentists in all the clinics</h2>
+                <button onclick="getAllDentists()">Get All Dentists</button>
+                <div id="get-all-dentists"></div>
+                <div id="getAllDentists"></div>
+            </div>
+            <!-- wip -->
+            <div class="query get-app-details">
+                <h2>
+                    b. Get details of all appointments for a given dentist for a
+                    specific week.
+                </h2>
+                <div class="select-button">
+                    <div id="select-dentists-container"></div>
+                    <button onclick="getAppointmentDetails()">
+                        Get Appointment Details
+                    </button>
+                </div>
+
+                <div id="get-app-details"></div>
+            </div>
+            <!-- end of wip -->
+            <div class="query get-app-patient">
+                <h2>d. Get details of all appointments of a given patient.</h2>
+                <div class="select-button">
+                    <div id="select-patients-container"></div>
+                    <button onclick="getAppointmentDetailsForPatient()">
+                        Get Appointment Details
+                    </button>
+                </div>
+                <div id="get-app-details-patient"></div>
+            </div>
+            <div class="query get-unpaid-bills">
+                <h2>g. Get details of all unpaid bills.</h2>
+                <div id="select-patients-container"></div>
+                <button onclick="getUnpaidBills()">Get Unpaid Bills</button>
+                <div id="get-unpaid-bills"></div>
+            </div>
+            <!-- wip -->
+            <div class="query add-patient">
+                <h2>Add Patient</h2>
+                <label for="id">ID</label>
+                <input type="text" id="patient-id" name="id"><br><br>
+                <label for="fname">First name</label>
+                <input type="text" id="patient-first-name" name="fname"><br><br>
+                <label for="lname">Last name:</label>
+                <input type="text" id="patient-last-name" name="lname"><br><br>
+                <button onclick="addPatient()">Add Patient</button>
+            </div>
+            <!-- end of wip  -->
+        </div>
+
+        <script src="script.js"></script>
+    </body>
 </html>
