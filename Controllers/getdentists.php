@@ -16,9 +16,7 @@
             $sql = "SELECT * FROM dentists";        
     
     
-                if ($result = mysqli_query($con, $sql)) {
-    
-    
+                if ($result = mysqli_query($con, $sql)) {    
                     echo '<table class="u-full-width">
                     <thead>
                       <tr>

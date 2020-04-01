@@ -11,7 +11,7 @@ xmlhttpdentists.onreadystatechange = function() {
         document.getElementById("select-dentists-container").innerHTML = this.responseText;
     }
 };
-xmlhttpdentists.open("GET","selectDentists.php",true);
+xmlhttpdentists.open("GET","./Controllers/selectDentists.php",true);
 xmlhttpdentists.send();
 
 if (window.XMLHttpRequest) {
@@ -26,7 +26,7 @@ xmlhttp.onreadystatechange = function() {
         document.getElementById("select-patients-container").innerHTML = this.responseText;
     }
 };
-xmlhttp.open("GET","selectPatients.php",true);
+xmlhttp.open("GET","./Controllers/selectPatients.php",true);
 xmlhttp.send();
 
 
@@ -45,7 +45,7 @@ function getAllDentists() {
                 document.getElementById("get-all-dentists").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","getdentists.php",true);
+        xmlhttp.open("GET","./Controllers/getdentists.php",true);
         xmlhttp.send();
 }
 
@@ -67,7 +67,7 @@ function getAppointmentDetailsForPatient() {
         var e = document.getElementById("select-patients");
         var selectedPatientId = e.options[e.selectedIndex].value;
         console.log(selectedPatientId);
-        xmlhttp.open("GET","getAppDetailsPatient.php?patientID="+selectedPatientId,true);
+        xmlhttp.open("GET","./Controllers/getAppDetailsPatient.php?patientID="+selectedPatientId,true);
         xmlhttp.send();
 }
 
@@ -86,7 +86,7 @@ function getUnpaidBills() {
                 document.getElementById("get-unpaid-bills").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","getUnpaidBills.php",true);
+        xmlhttp.open("GET","./Controllers/getUnpaidBills.php",true);
         xmlhttp.send();
 }
 
@@ -100,7 +100,7 @@ function addPatient() {
     }
     var firstName = document.getElementById("patient-first-name").value;
     var lastName = document.getElementById("patient-last-name").value;
-    xmlhttp.open("POST","addPatient.php?");
+    xmlhttp.open("POST","./Controllers/addPatient.php");
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlhttp.send("firstName="+firstName+"&lastName="+lastName);
 }
