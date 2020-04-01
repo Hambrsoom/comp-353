@@ -1,6 +1,6 @@
 <?php            
-            $firstName = $_GET['firstName'];
-            $lastName = $_GET['lastName'];
+            $firstName = $_POST['firstName'];
+            $lastName = $_POST['lastName'];
             $con = mysqli_connect("127.0.0.1:3306","root","","test");
 
             if (mysqli_connect_errno()) {
@@ -10,11 +10,8 @@
 
 
             $sql = "INSERT INTO patients(firstName,lastName) VALUES('".$firstName."','".$lastName."')";        
-            
-            echo '<p>'.$firstName.'</p>';
-            echo '<p>'.$row['missed'].'</p>'; 
 
             mysqli_query($con, $sql);
             mysqli_close($con);
 
-        ?>
+?>

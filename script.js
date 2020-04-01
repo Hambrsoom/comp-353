@@ -103,6 +103,5 @@ function addPatient() {
     xmlhttp.open("POST","addPatient.php?");
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlhttp.send("firstName="+firstName+"&lastName="+lastName);
-
 }
 
