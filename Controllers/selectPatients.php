@@ -7,16 +7,10 @@
 </head>
 <body>
 <?php     
-        $con = mysqli_connect("127.0.0.1:3306","root","","test");
-
-        if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        exit();
-        }
-
+        require('../Services/DbService.php');
         $sql = "SELECT patientID, firstName, lastName FROM patients";        
 
-        if ($result = mysqli_query($con, $sql)) {
+        if ($result = $con->query($sql)) {
             echo '<select id="select-patients">';
             /* fetch associative array */
             while ($row = mysqli_fetch_array($result)) {
@@ -28,7 +22,7 @@
             mysqli_free_result($result);
         }
 
-        mysqli_close($con);
+        $con->close();
         ?>
 </body>
 </html>

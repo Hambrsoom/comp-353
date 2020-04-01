@@ -6,34 +6,24 @@
     </head>
     <body>
         <?php    
-            $con = mysqli_connect("127.0.0.1:3306","root","","test");
+            require('../Services/DbService.php');
 
-            if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-            exit();
-            }
-    
-            $sql = "SELECT * FROM dentists";        
-    
-    
-                if ($result = mysqli_query($con, $sql)) {    
+            $sql = "SELECT * FROM dentists";   
+
+                if ($result = $con->query($sql)) {    
                     echo '<table class="u-full-width">
                     <thead>
                       <tr>
-                        <th>Dentist ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Clinic Id</th>
                       </tr>
                     </thead>
                     <tbody>';
     
                     while($row = $result->fetch_assoc()) {
                         echo '<tr>';
-                        echo '<td>'.$row['dentistID'].'</td>';
                         echo '<td>'.$row['firstName'].'</td>'; 
                         echo '<td>'.$row['lastName'].'</td>';
-                        echo '<td>'.$row['clinicID'].'</td>';
                         echo '</tr>';
                     }
     
@@ -44,7 +34,7 @@
                 }
             
     
-            mysqli_close($con);
+            $con->close()
         
 
         ?>
