@@ -1,5 +1,5 @@
 <?php
-  $host='127.0.0.1'; // Host name.
+  $host='127.0.0.1:3306'; // Host name.
   $user='root'; //mysql user
   $password=''; //mysql pass
   $dbname='test'; // Database name.

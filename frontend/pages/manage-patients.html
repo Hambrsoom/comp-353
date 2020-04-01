@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Manage Patients</title>
+        <link
+            href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../assets/css/normalize.css"
+        />
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+    </head>
+    <body>
+        <ul class="nav">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="queries.html">Queries</a></li>
+            <li><a href="manage-appointments.html">Manage Appointments</a></li>
+            <li><a class="active"  href="#">Manage Patients</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+        <div class="container">
+            <div class="query add-patient">
+                <h2>Add Patient</h2>
+                <div class="add-patient-input">
+                    <div>
+                        <label for="fname">First name</label>
+                        <input
+                            type="text"
+                            id="patient-first-name"
+                            name="fname"
+                        />
+                    </div>
+                    <div>
+                        <label for="lname">Last name:</label>
+                        <input
+                            type="text"
+                            id="patient-last-name"
+                            name="lname"
+                        />
+                    </div>
+                    <button onclick="addPatient()">Add Patient</button>
+                </div>
+                <div id="add-patient-res"></div>
+            </div>
+        </div>
+
+        <script src="../assets/js/addData.js"></script>
+    </body>
+</html>

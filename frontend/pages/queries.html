@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Queries</title>
+        <link
+            href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../assets/css/normalize.css"
+        />
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+    </head>
+    <body>
+        <ul class="nav">
+            <li><a href="../index.html">Home</a></li>
+            <li><a class="active"  href="#">Queries</a></li>
+            <li><a href="manage-appointments.html">Manage Appointments</a></li>
+            <li><a href="manage-patients.html">Manage Patients</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+        <div class="container">
+            <div class="query get-dentists">
+                <h2>a. Get details of all dentists in all the clinics</h2>
+                <button onclick="getAllDentists()">Get All Dentists</button>
+                <div id="get-all-dentists"></div>
+                <div id="getAllDentists"></div>
+            </div>
+            <!-- wip -->
+            <div class="query get-app-details">
+                <h2>
+                    b. Get details of all appointments for a given dentist for a
+                    specific week.
+                </h2>
+                <div class="select-button">
+                    <div id="select-dentists-container"></div>
+                    <button onclick="getAppointmentDetails()">
+                        Get Appointment Details
+                    </button>
+                </div>
+
+                <div id="get-app-details"></div>
+            </div>
+            <!-- end of wip -->
+            <div class="query get-app-clinic">
+                <h2>
+                    c. Get details of all appointments at a given clinic on a
+                    specific date..
+                </h2>
+                <div class="select-button">
+                    <div id="select-clinics-container"></div>
+                    <input
+                        type="date"
+                        id="app-date"
+                        name="app-date"
+                        min="2020-01-01"
+                        max="2020-12-31"
+                    />
+                    <button onclick="getAppointmentDetailsForClinic()">
+                        Get Appointment Details
+                    </button>
+                </div>
+                <div id="get-app-details-clinic"></div>
+            </div>
+            <div class="query get-app-patient">
+                <h2>d. Get details of all appointments of a given patient.</h2>
+                <div class="select-button">
+                    <div id="select-patients-container"></div>
+                    <button onclick="getAppointmentDetailsForPatient()">
+                        Get Appointment Details
+                    </button>
+                </div>
+                <div id="get-app-details-patient"></div>
+            </div>
+            <div class="query get-missed-app">
+                <h2>e. Get the number of missed appointments for each patient (only for patients who have
+                    missed at least 1 appointment).</h2>
+                <div class="select-button">
+                    <button onclick="getMissedAppointments()">
+                        Get Missed Appointments
+                    </button>
+                </div>
+                <div id="get-missed-apps"></div>
+            </div>
+            <div class="query get-treatments-app">
+                <h2>f. Get details of all the treatments made during a given appointment.</h2>
+                <div class="select-button">
+                    <div id="select-appointments-container"></div>
+                    <button onclick="getTreatmentsForAppointments()">
+                        Get Treatments
+                    </button>
+                </div>
+                <div id="get-app-details-patient"></div>
+            </div>
+            <div class="query get-unpaid-bills">
+                <h2>g. Get details of all unpaid bills.</h2>
+                <div id="select-patients-container"></div>
+                <button onclick="getUnpaidBills()">Get Unpaid Bills</button>
+                <div id="get-unpaid-bills"></div>
+            </div>
+        </div>
+
+        <script src="../assets/js/getData.js"></script>
+    </body>
+</html>
