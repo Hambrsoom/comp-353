@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link rel="stylesheet" type="text/css" href="assets/css/skeleton.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
-        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-</head>
-<body>
+
 <?php     
         require('../Services/DbService.php');
 
@@ -24,6 +17,4 @@
         }
 
         $con->close();
-        ?>
-</body>
-</html>
+?>
