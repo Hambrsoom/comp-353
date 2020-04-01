@@ -7,7 +7,6 @@
     
     
                 if ($result = $con->query($sql)) {
-    
                     require('../Services/TableService.php');
 
                     echo outputTable($result);

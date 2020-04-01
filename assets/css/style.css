@@ -32,4 +32,13 @@ ul {
   /* Change the link color to #111 (black) on hover */
   li a:hover {
     background-color: #111;
+    color: white;
+  }
+   .add-patient-input{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+  .add-patient-input button{
+      align-self: flex-end;
   }

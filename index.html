@@ -16,63 +16,41 @@
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     </head>
     <body>
-        <ul class = "nav">
+        <ul class="nav">
             <li><a class="active" href="#home">Home</a></li>
+            <li><a href="./Pages/queries.html">Queries</a></li>
             <li><a href="./Pages/AddEmployee.html">Add New Employee</a></li>
             <li><a href="./Pages/Appointment.html">Appointments</a></li>
             <li><a href="#about">About</a></li>
-          </ul>
+        </ul>
         <div class="container">
-            <div class="query get-dentists">
-                <h2>a. Get details of all dentists in all the clinics</h2>
-                <button onclick="getAllDentists()">Get All Dentists</button>
-                <div id="get-all-dentists"></div>
-                <div id="getAllDentists"></div>
-            </div>
-            <!-- wip -->
-            <div class="query get-app-details">
-                <h2>
-                    b. Get details of all appointments for a given dentist for a
-                    specific week.
-                </h2>
-                <div class="select-button">
-                    <div id="select-dentists-container"></div>
-                    <button onclick="getAppointmentDetails()">
-                        Get Appointment Details
-                    </button>
-                </div>
-
-                <div id="get-app-details"></div>
-            </div>
-            <!-- end of wip -->
-            <div class="query get-app-patient">
-                <h2>d. Get details of all appointments of a given patient.</h2>
-                <div class="select-button">
-                    <div id="select-patients-container"></div>
-                    <button onclick="getAppointmentDetailsForPatient()">
-                        Get Appointment Details
-                    </button>
-                </div>
-                <div id="get-app-details-patient"></div>
-            </div>
-            <div class="query get-unpaid-bills">
-                <h2>g. Get details of all unpaid bills.</h2>
-                <div id="select-patients-container"></div>
-                <button onclick="getUnpaidBills()">Get Unpaid Bills</button>
-                <div id="get-unpaid-bills"></div>
-            </div>
             <!-- wip -->
             <div class="query add-patient">
                 <h2>Add Patient</h2>
-                <label for="fname">First name</label>
-                <input type="text" id="patient-first-name" name="fname"><br><br>
-                <label for="lname">Last name:</label>
-                <input type="text" id="patient-last-name" name="lname"><br><br>
-                <button onclick="addPatient()">Add Patient</button>
+                <div class="add-patient-input">
+                    <div>
+                        <label for="fname">First name</label>
+                        <input
+                            type="text"
+                            id="patient-first-name"
+                            name="fname"
+                        />
+                    </div>
+                    <div>
+                        <label for="lname">Last name:</label>
+                        <input
+                            type="text"
+                            id="patient-last-name"
+                            name="lname"
+                        />
+                    </div>
+                    <button onclick="addPatient()">Add Patient</button>
+                </div>
             </div>
             <!-- end of wip  -->
         </div>
 
-        <script src="script.js"></script>
+        <script src="assets/js/getData.js"></script>
+        <script src="assets/js/addData.js"></script>
     </body>
 </html>
