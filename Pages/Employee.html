@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>COMP 353 Main Project</title>
+        <link
+            href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link rel="stylesheet" type="text/css" href="assets/css/skeleton.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="assets/css/normalize.css"
+        />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    </head>
+    <body>
+        <div class="query add-Employee">
+            <h2>Add Patient</h2>
+            <label for="fname">First name</label>
+            <input type="text" id="employee-first-name" name="fname"><br><br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="employee-last-name" name="lname"><br><br>
+            <form action="/action_page.php">
+                <p>Please select your gender:</p>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Dentist</label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Dentist_Assistant</label><br>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Receptionist</label>
+                <input type="submit" value="Submit">
+              </form>
+            <button onclick="addPatient()">Add Employee</button>
+        </div>
+    </body>
+</html>
+
+
+
