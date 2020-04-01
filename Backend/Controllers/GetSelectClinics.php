@@ -1,6 +1,6 @@
 
 <?php     
-        require('../Services/DbService.php');
+        require('../Services/DbConnectionService.php');
         $sql = "SELECT clinicID, clinicName FROM clinics";        
 
         if ($result = $con->query($sql)) {

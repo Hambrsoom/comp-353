@@ -1,11 +1,15 @@
 <?php      
-    require('../Services/DbService.php');
+    require('../../Services/DbConnectionService.php');
 
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
 
-    $sql = "INSERT INTO patients(firstName,lastName) VALUES('".$firstName."','".$lastName."')"; 
+    $sql = "INSERT INTO patients(firstName,lastName) VALUES('".$firstName."','".$lastName."');"; 
 
-    $result = $con->query($sql);
+    if ($con->query($sql)){
+        echo 'Patient added successfully';
+    } else {
+        echo 'Error adding patient';
+    }
     $con->close();
 ?>

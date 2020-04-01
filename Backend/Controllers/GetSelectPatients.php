@@ -1,15 +1,14 @@
 
 <?php     
-        require('../Services/DbService.php');
-
-        $sql = "SELECT dentistID, firstName, lastName FROM dentists";        
+        require('../Services/DbConnectionService.php');
+        $sql = "SELECT patientID, firstName, lastName FROM patients";        
 
         if ($result = $con->query($sql)) {
-            echo '<select id="select-dentists">';
+            echo '<select id="select-patients">';
             /* fetch associative array */
             while ($row = mysqli_fetch_array($result)) {
                 $fullName = $row['firstName']." ".$row['lastName'];
-                echo "<option value='".$row['dentistID']."'>".$fullName."</option>"; 
+                echo "<option value='".$row['patientID']."'>".$fullName."</option>"; 
         }
             echo '</select>';
 
