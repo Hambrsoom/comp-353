@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>COMP 353 Main Project</title>
+        <title>Manage Patients</title>
         <link
             href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
             rel="stylesheet"
             type="text/css"
         />
-        <link rel="stylesheet" type="text/css" href="assets/css/skeleton.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css" />
         <link
             rel="stylesheet"
             type="text/css"
-            href="assets/css/normalize.css"
+            href="../assets/css/normalize.css"
         />
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
     </head>
     <body>
         <ul class="nav">
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="./Pages/queries.html">Queries</a></li>
-            <li><a href="./Pages/Employee.html">Add New Employee</a></li>
-            <li><a href="./Pages/Appointment.html">Appointments</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="queries.html">Queries</a></li>
+            <li><a href="manage-appointments.html">Manage Appointments</a></li>
+            <li><a class="active"  href="#">Manage Patients</a></li>
+            <li><a href="admin.html">Admin</a></li>
         </ul>
         <div class="container">
-            <!-- wip -->
             <div class="query add-patient">
                 <h2>Add Patient</h2>
                 <div class="add-patient-input">
@@ -47,10 +46,8 @@
                     <button onclick="addPatient()">Add Patient</button>
                 </div>
             </div>
-            <!-- end of wip  -->
         </div>
 
-        <script src="assets/js/getData.js"></script>
-        <script src="assets/js/addData.js"></script>
+        <script src="../assets/js/addData.js"></script>
     </body>
 </html>

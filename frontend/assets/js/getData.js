@@ -7,7 +7,7 @@ xmlhttpdentists.onreadystatechange = function() {
         ).innerHTML = this.responseText;
     }
 };
-xmlhttpdentists.open('GET', '../Controllers/selectDentists.php', true);
+xmlhttpdentists.open('GET', '../../Backend/Controllers/selectDentists.php', true);
 xmlhttpdentists.send();
 
 
@@ -20,7 +20,7 @@ xmlhttppatients.onreadystatechange = function() {
         ).innerHTML = this.responseText;
     }
 };
-xmlhttppatients.open('GET', '../Controllers/selectPatients.php', true);
+xmlhttppatients.open('GET', '../../Backend/Controllers/selectPatients.php', true);
 xmlhttppatients.send();
 
 //get clinic names
@@ -32,7 +32,7 @@ xmlhttp.onreadystatechange = function() {
         ).innerHTML = this.responseText;
     }
 };
-xmlhttp.open('GET', '../Controllers/selectClinics.php', true);
+xmlhttp.open('GET', '../../Backend/Controllers/selectClinics.php', true);
 xmlhttp.send();
 
 //query a
@@ -46,7 +46,7 @@ function getAllDentists() {
             ).innerHTML = this.responseText;
         }
     };
-    xmlhttp.open('GET', '../Controllers/getdentists.php', true);
+    xmlhttp.open('GET', '../../Backend/Controllers/getdentists.php', true);
     xmlhttp.send();
 }
 
@@ -64,7 +64,7 @@ function getAppointmentDetailsForPatient() {
     var selectedPatientId = e.options[e.selectedIndex].value;
     xmlhttp.open(
         'GET',
-        '../Controllers/getAppDetailsPatient.php?patientID=' + selectedPatientId,
+        '../../Backend/Controllers/getAppDetailsPatient.php?patientID=' + selectedPatientId,
         true
     );
     xmlhttp.send();
@@ -80,7 +80,7 @@ function getUnpaidBills() {
             ).innerHTML = this.responseText;
         }
     };
-    xmlhttp.open('GET', '../Controllers/getUnpaidBills.php', true);
+    xmlhttp.open('GET', '../../Backend/Controllers/getUnpaidBills.php', true);
     xmlhttp.send();
 }
 
@@ -92,7 +92,7 @@ function getAppointmentDetailsForClinic() {
     var date = document.getElementById('app-date').value;
     xmlhttp.open(
         'GET',
-        '../Controllers/getAppDetailsClinic.php?clinicID=' +
+        '../../Backend/Controllers/getAppDetailsClinic.php?clinicID=' +
             selectedClinicId +
             '&appDate=' +
             date,

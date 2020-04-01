@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>COMP 353 Main Project</title>
+        <title>Queries</title>
         <link
             href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
             rel="stylesheet"
@@ -17,11 +17,11 @@
     </head>
     <body>
         <ul class="nav">
-            <li><a class="active" href="../index.html">Home</a></li>
-            <li><a href="#">Queries</a></li>
-            <li><a href="Employee.html">Add New Employee</a></li>
-            <li><a href="Appointment.html">Appointments</a></li>
-            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a class="active"  href="#">Queries</a></li>
+            <li><a href="manage-appointments.html">Manage Appointments</a></li>
+            <li><a href="manage-patients.html">Manage Patients</a></li>
+            <li><a href="admin.html">Admin</a></li>
         </ul>
         <div class="container">
             <div class="query get-dentists">
@@ -72,6 +72,16 @@
                     <div id="select-patients-container"></div>
                     <button onclick="getAppointmentDetailsForPatient()">
                         Get Appointment Details
+                    </button>
+                </div>
+                <div id="get-app-details-patient"></div>
+            </div>
+            <div class="query get-treatments-app">
+                <h2>f. Get details of all the treatments made during a given appointment.</h2>
+                <div class="select-button">
+                    <div id="select-appointments-container"></div>
+                    <button onclick="getTreatmentsForAppointments()">
+                        Get Treatments
                     </button>
                 </div>
                 <div id="get-app-details-patient"></div>
