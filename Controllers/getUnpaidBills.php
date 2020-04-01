@@ -6,8 +6,7 @@
     </head>
     <body>
         <?php    
-            $con = mysqli_connect("127.0.0.1:3306","root","","test");
-
+            require('../Services/DbService.php');
             if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
             exit();
@@ -16,7 +15,7 @@
             $sql = "SELECT * FROM bills WHERE paid = 0";        
     
     
-                if ($result = mysqli_query($con, $sql)) {
+                if ($result = $con->query($sql)) {
     
                     echo '<table class="u-full-width">
                     <thead>
@@ -40,7 +39,7 @@
         
                     mysqli_free_result($result);
                 }
-            mysqli_close($con);
+            $con->close();
         ?>
     </body>
 </html>

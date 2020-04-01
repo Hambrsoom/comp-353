@@ -5,19 +5,14 @@
         <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <?php    
+        <?php  
+            require('../Services/DbService.php');
             $patientID = intval($_GET['patientID']);
-            $con = mysqli_connect("127.0.0.1:3306","root","","test");
-
-            if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-            exit();
-            }
 
             $sql = "SELECT * FROM appointments WHERE patientID ='".$patientID."'";        
     
     
-                if ($result = mysqli_query($con, $sql)) {
+                if ($result = $con->query($sql)) {
     
     
                     echo '<table class="u-full-width">
@@ -53,7 +48,7 @@
                 }
             
     
-            mysqli_close($con);
+            $con->close()
         
 
         ?>
