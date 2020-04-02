@@ -24,8 +24,90 @@
             <li><a href="admin.html">Admin</a></li>
         </ul>
         <div class="container">
+            <div class="query add-appoitment">
+                <h2>Make An Appointment</h2>
+                <div class="add-appointment-input">
+                    <div>
+                        <label for="fname">First name</label>
+                        <div class="select-button">
+                            <div id="select-patients-container"></div>
+                    </div>
+                    <div>
+                        <label for="phone">Enter your phone number:</label>
+                        <input 
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            required
+                        />
 
+                    </div>
+                    <div>
+                        <label type="text" id="gender" name="gender">Gender</label>
+                        <input 
+                            type="radio"
+                            id="male"
+                            name="gender"
+                            value="male"> Male
+                        <input 
+                            type="radio"
+                            id="female"
+                            name="gender"
+                            value="female"
+                        /> Female
+                        <input 
+                            type="radio"
+                            id="other"
+                            name="gender"
+                            value="other"> Other
+                    </div>
+
+                    <div>
+                        <label for="fname">Dentist</label>
+                        <div class="select-button">
+                            <div id="select-dentists-container">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="fname">Clinic:</label>
+                        <div class="select-button">
+                            <div id="select-clinics-container">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="date">Date:</label>
+                        <input 
+                            type="date"
+                            id="appoitment-date"
+                            name="appoitment-date"
+                        />
+                        <label for="time">Time:</label>
+                        <input 
+                            type="time"
+                            id="appoitment-time"
+                            name="appoitment-time"
+                        /> 
+                    </div>
+                    <div>
+                        <label for="cost">Cost:</label>
+                        <input type="number" min="1" step="any" />
+                    </div>
+                    <div>
+                        <label for="cost">Appointment Made by:</label>
+                        
+                    </div>
+
+                    <button onclick="addAppoitment()">Add Appoitment</button>
+                    <div id="add-appointment-res"></div>
+                </div>
         </div>
-
+        <script src="../assets/js/addData.js"></script>
+        <script src="../assets/js/getData.js"></script>
     </body>
 </html>
