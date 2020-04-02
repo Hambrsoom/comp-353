@@ -37,7 +37,9 @@
                     specific week.
                 </h2>
                 <div class="select-button">
-                    <div id="select-dentists-container"></div>
+                    <div id="select-dentists-container">
+                        <select id="select-dentists"></select>
+                    </div>
                     <button onclick="getAppointmentDetails()">
                         Get Appointment Details
                     </button>
@@ -52,7 +54,9 @@
                     specific date..
                 </h2>
                 <div class="select-button">
-                    <div id="select-clinics-container"></div>
+                    <div id="select-clinics-container">
+                        <select id="select-clinics"></select>
+                    </div>
                     <input
                         type="date"
                         id="app-date"
@@ -69,12 +73,15 @@
             <div class="query get-app-patient">
                 <h2>d. Get details of all appointments of a given patient.</h2>
                 <div class="select-button">
-                    <div id="select-patients-container"></div>
+                    <div id="select-patients-container">
+                        <select id="select-patients"></select>
+                    </div>
                     <button onclick="getAppointmentDetailsForPatient()">
                         Get Appointment Details
                     </button>
                 </div>
-                <div id="get-app-details-patient"></div>
+                <div id="get-app-details-patient">
+                </div>
             </div>
             <div class="query get-missed-app">
                 <h2>e. Get the number of missed appointments for each patient (only for patients who have
