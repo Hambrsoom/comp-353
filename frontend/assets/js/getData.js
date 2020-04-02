@@ -197,3 +197,18 @@ function getMissedAppointments() {
     );
     xmlhttp.send();
 }
+
+
+function getAllReceptionists(){
+    let xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(
+                'get-all-receptionists'
+            ).innerHTML = this.responseText;
+        }
+    };
+     xmlhttp.open('GET', '../../Backend/Controllers/QueryControllers/GetAllReceptionists.php', true);
+    xmlhttp.send();
+}

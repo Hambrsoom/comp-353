@@ -1,13 +1,14 @@
 <?php      
     require('../../Services/DbConnectionService.php');
 
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
+    $patientId = $_POST['patientId'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    $dentist = $_POST['dentist'];
-    $clinic = $_POST['clinic'];
+    $dentistId = $_POST['dentist'];
+    $clinicId = $_POST['clinic'];
     $cost  = $_POST['cost'];
+
+    echo "Hello"
 
     $sql = "INSERT INTO appoitments(firstName,lastName) VALUES('".$firstName."','".$lastName."');"; 
 
@@ -16,5 +17,7 @@
     } else {
         echo 'Error adding patient';
     }
+
+
     $con->close();
 ?>
