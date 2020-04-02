@@ -27,6 +27,7 @@ function getSelectDentists() {
                     new Option(option.text, option.value, option.selected)
                 )
             );
+            optionsList.add(new Option('No Dentist', null, null))
         }
     };
     xmlhttp.open(
