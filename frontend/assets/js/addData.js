@@ -22,12 +22,11 @@ function addPatient() {
 
 function addAppoitment(){
     xmlhttp = XMLHttpRequest();
-    const firstName = document.getElementById('patient-first-name').value;
-    const lastName = document.getElementById('patient-last-name').value;
+    const patientId = document.getElementById('select-patients-container').value;
     const phoneNumber = document.getElementById('phone').value;
     const gender      = document.getElementById('gender').value;
-    const dentist     = document.getElementById('select-dentists-container').value;
-    const clinic      = document.getElementById('select-clinics-container').value;
+    const dentistId     = document.getElementById('select-dentists-container').value;
+    const clinicId      = document.getElementById('select-clinics-container').value;
     const date        = document.getElementById('date').value;
     const time        = document.getElementById('time').value;
     const cost        = document.getElementById('cost').value
@@ -45,6 +44,6 @@ function addAppoitment(){
             ).innerHTML = this.responseText;
         }
     };
-    xmlhttp.send('firstName=' + firstName + '&lastName=' + lastName +'&date='+ date +'&time=' + time  +'&dentist='+dentist+ '&clinic='+clinic + '$cost=' + cost);
+    xmlhttp.send('patientId=' + patientId +'&date='+ date +'&time=' + time  +'&dentistId='+dentistId+ '&clinicId='+clinicId + '$cost=' + cost);
 
 }

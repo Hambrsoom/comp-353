@@ -29,19 +29,8 @@
                 <div class="add-appointment-input">
                     <div>
                         <label for="fname">First name</label>
-                        <input
-                            type="text"
-                            id="patient-first-name"
-                            name="fname"
-                        />
-                    </div>
-                    <div>
-                        <label for="lname">Last name:</label>
-                        <input
-                            type="text"
-                            id="patient-last-name"
-                            name="lname"
-                        />
+                        <div class="select-button">
+                            <div id="select-patients-container"></div>
                     </div>
                     <div>
                         <label for="phone">Enter your phone number:</label>
@@ -108,6 +97,10 @@
                     <div>
                         <label for="cost">Cost:</label>
                         <input type="number" min="1" step="any" />
+                    </div>
+                    <div>
+                        <label for="cost">Appointment Made by:</label>
+                        
                     </div>
 
                     <button onclick="addAppoitment()">Add Appoitment</button>
