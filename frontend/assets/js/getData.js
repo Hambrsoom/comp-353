@@ -1,4 +1,3 @@
-
 window.onload = onLoad();
 
 function onLoad() {
@@ -12,27 +11,61 @@ function getSelectDentists() {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById(
-                'select-dentists-container'
-            ).innerHTML = this.responseText;
+            let res = JSON.parse(this.response);
+
+            let optionsList = document.getElementById('select-dentists').options;
+            let options = [];
+            res.forEach(dentist => {
+                options.push({
+                    text: dentist.firstName + ' ' + dentist.lastName,
+                    value: dentist.dentistID
+                });
+            });
+
+            options.forEach(option =>
+                optionsList.add(
+                    new Option(option.text, option.value, option.selected)
+                )
+            );
         }
     };
-    xmlhttp.open('GET', '../../Backend/Controllers/GetSelectDentists.php', true);
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/GetSelectDentists.php',
+        true
+    );
     xmlhttp.send();
 }
-
 
 //get patient names
 function getSelectPatients() {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById(
-                'select-patients-container'
-            ).innerHTML = this.responseText;
+            let res = JSON.parse(this.response);
+
+            let optionsList = document.getElementById('select-patients')
+                .options;
+            let options = [];
+            res.forEach(patient => {
+                options.push({
+                    text: patient.firstName + ' ' + patient.lastName,
+                    value: patient.patientID
+                });
+            });
+
+            options.forEach(option =>
+                optionsList.add(
+                    new Option(option.text, option.value, option.selected)
+                )
+            );
         }
     };
-    xmlhttp.open('GET', '../../Backend/Controllers/GetSelectPatients.php', true);
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/GetSelectPatients.php',
+        true
+    );
     xmlhttp.send();
 }
 
@@ -41,9 +74,22 @@ function getSelectClinics() {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById(
-                'select-clinics-container'
-            ).innerHTML = this.responseText;
+            let res = JSON.parse(this.response);
+
+            let optionsList = document.getElementById('select-clinics').options;
+            let options = [];
+            res.forEach(clinic => {
+                options.push({
+                    text: clinic.clinicName,
+                    value: clinic.clinicID
+                });
+            });
+
+            options.forEach(option =>
+                optionsList.add(
+                    new Option(option.text, option.value, option.selected)
+                )
+            );
         }
     };
     xmlhttp.open('GET', '../../Backend/Controllers/GetSelectClinics.php', true);
@@ -61,7 +107,11 @@ function getAllDentists() {
             ).innerHTML = this.responseText;
         }
     };
-    xmlhttp.open('GET', '../../Backend/Controllers/QueryControllers/GetAllDentists.php', true);
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetAllDentists.php',
+        true
+    );
     xmlhttp.send();
 }
 
@@ -79,7 +129,8 @@ function getAppointmentDetailsForPatient() {
     const selectedPatientId = e.options[e.selectedIndex].value;
     xmlhttp.open(
         'GET',
-        '../../Backend/Controllers/QueryControllers/GetAppDetailsPatient.php?patientID=' + selectedPatientId,
+        '../../Backend/Controllers/QueryControllers/GetAppDetailsPatient.php?patientID=' +
+            selectedPatientId,
         true
     );
     xmlhttp.send();
@@ -95,7 +146,11 @@ function getUnpaidBills() {
             ).innerHTML = this.responseText;
         }
     };
-    xmlhttp.open('GET', '../../Backend/Controllers/QueryControllers/GetUnpaidBills.php', true);
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetUnpaidBills.php',
+        true
+    );
     xmlhttp.send();
 }
 
@@ -104,6 +159,8 @@ function getAppointmentDetailsForClinic() {
 
     const e = document.getElementById('select-clinics');
     const selectedClinicId = e.options[e.selectedIndex].value;
+    console.log(selectedClinicId);
+    
     const date = document.getElementById('app-date').value;
     xmlhttp.open(
         'GET',
@@ -121,7 +178,6 @@ function getAppointmentDetailsForClinic() {
         }
     };
     xmlhttp.send();
-
 }
 
 function getMissedAppointments() {
@@ -134,6 +190,10 @@ function getMissedAppointments() {
             ).innerHTML = this.responseText;
         }
     };
-     xmlhttp.open('GET', '../../Backend/Controllers/QueryControllers/GetMissedAppointments.php', true);
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetMissedAppointments.php',
+        true
+    );
     xmlhttp.send();
 }
