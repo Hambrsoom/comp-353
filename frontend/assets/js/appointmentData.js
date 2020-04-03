@@ -1,3 +1,9 @@
+window.onload = onLoad();
+
+function onLoad() {
+    getAllAppointments();
+}
+
 function getAllAppointments() {
     let xmlhttp = new XMLHttpRequest();
 
@@ -25,9 +31,6 @@ function getAllAppointmentsForASpecificWeek() {
     date = date.substring(6);
     console.log(dentistId);
     console.log(date);
-    
-    // beginningOfWeek = findTheDateForSunday(date);   
-    // endOfWeek = findTheDateForSaturday(date); 
 
     xmlhttp.open(
         'POST',
@@ -37,7 +40,7 @@ function getAllAppointmentsForASpecificWeek() {
         'Content-type',
         'application/x-www-form-urlencoded'
     );
-    
+
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById(
@@ -45,8 +48,6 @@ function getAllAppointmentsForASpecificWeek() {
             ).innerHTML = this.responseText;
         }
     };
-
-   
 
     xmlhttp.send( 
         '&date=' +

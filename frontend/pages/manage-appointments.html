@@ -102,8 +102,7 @@
                         <input type="number" id="cost" min="1" step="any" />
                     </div>
                     <div>
-                        <label for="cost">Appointment Made by:</label>
-                        
+                        <label for="cost">Appointment Made by:</label> 
                     </div>
 
                     <button onclick="addAppoitment()">Add Appoitment</button>
@@ -113,10 +112,18 @@
         <br><br>
         <div class="container">
             <div class="query delete-appoitment">
+                <label for="fname">Choose the appointment that you want to delete:</label>
+                        <div class="select-button">
+                            <div id="select-appointment-container">
+                                <select name="" id="select-appointments"></select>
+                            </div>
+                        </div>
+                        <button onclick="deleteAppointments()">Delete Appoitment</button>
                 
             </div>
         </div>
         <script src="../assets/js/addData.js"></script>
         <script src="../assets/js/getData.js"></script>
+        <script src="../assets/js/appointmentData.js"></script>
     </body>
 </html>
