@@ -40,10 +40,14 @@
                     <div id="select-dentists-container">
                         <select id="select-dentists"></select>
                     </div>
-                    <button onclick="getAppointmentDetails()">
+                    <input type="week" name="week" id="app-date-doctor"
+                         min="2020-W01" required>
+                    <button onclick="getAllAppointmentsForASpecificWeek()">
                         Get Appointment Details
                     </button>
                 </div>
+
+                    <div id="get-all-appointments-for-doctor"></div>
 
                 <div id="get-app-details"></div>
             </div>
@@ -109,16 +113,16 @@
                 <button onclick="getUnpaidBills()">Get Unpaid Bills</button>
                 <div id="get-unpaid-bills"></div>
             </div>
-                
                 <div class="query get-receptionists">
                     <h2>g. Get all receptionists:'</h2>
                     <button onclick="getAllReceptionists()">Get All Receptionists</button>
                     <div id="get-all-receptionists"></div>
                     <div id="getAllReceptionists"></div>
                 </div>
-                
         </div>
 
         <script src="../assets/js/getData.js"></script>
+        <script src="../assets/js/appointmentData.js"></script>
+
     </body>
 </html>
