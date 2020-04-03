@@ -40,10 +40,17 @@
                     <div id="select-dentists-container">
                         <select id="select-dentists"></select>
                     </div>
-                    <button onclick="getAppointmentDetails()">
+                    <input
+                        type="date"
+                        id="app-date-doctor"
+                        name="app-date"
+                    />
+                    <button onclick="getAllAppointmentsForASpecificWeek()()">
                         Get Appointment Details
                     </button>
                 </div>
+
+                    <div id="get-all-appointments-for-doctor"></div>
 
                 <div id="get-app-details"></div>
             </div>
@@ -118,5 +125,7 @@
         </div>
 
         <script src="../assets/js/getData.js"></script>
+        <script src="../assets/js/appointmentData.js"></script>
+
     </body>
 </html>

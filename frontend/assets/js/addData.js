@@ -24,20 +24,13 @@ function addPatient() {
 
 function addAppoitment() {
     xmlhttp = new XMLHttpRequest();
-    const patientElement = document.getElementById('select-patients');
-    const patientId = patientElement.options[e.selectedIndex].value;
-
+    const patientId = document.getElementById('select-patients').value;
     const phoneNumber = document.getElementById('phone').value;
     const gender = document.getElementById('gender').value;
-
-    const dentistElement = document.getElementById('select-dentists').value;
-    const dentistId = dentistElement.options[e.selectedIndex].value;
-
-    const clinicElement = document.getElementById('select-clinics').value;
-    const clinicId = clinicId.options[e.selectedIndex].value;
-    
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
+    const dentistId = document.getElementById('select-dentists').value;
+    const clinicId = document.getElementById('select-clinics').value;
+    const date = document.getElementById('appoitment-date').value;
+    const time = document.getElementById('appoitment-time').value;
     const cost = document.getElementById('cost').value;
 
     xmlhttp.open(
