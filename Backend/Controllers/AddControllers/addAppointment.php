@@ -2,15 +2,16 @@
     require('../../Services/DbConnectionService.php');
 
     $patientId = $_POST['patientId'];
-    $date = $_POST['date'];
-    $time = $_POST['time'];
-    $dentistId = $_POST['dentist'];
-    $clinicId = $_POST['clinic'];
-    $cost  = $_POST['cost'];
+    $date      = $_POST['date'];
+    $time      =  13:00:00;
+    $dentistId = $_POST['dentistId'];
+    $clinicId  = $_POST['clinicId'];
+    $receptionistId = 8;
+    $billId   = 10;
 
-    echo "Hello"
+    $emptyValue = NULL;
 
-    $sql = "INSERT INTO appoitments(firstName,lastName) VALUES('".$firstName."','".$lastName."');"; 
+    $sql = "INSERT INTO appoitments(missed,date,time,patientID,dentistID,clinicID,receptionistID,billID) VALUES('".$emptyValue."','".$date."','".$time."','".$patientId."','".$dentistId."','".$clinicId."','".$receptionistId."','".$billId."');"; 
 
     if ($con->query($sql)){
         echo 'Appointment added successfully';
