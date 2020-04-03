@@ -1,9 +1,12 @@
 function addPatient() {
     var xmlhttp = new XMLHttpRequest();
 
-    const firstName   = document.getElementById('patient-first-name').value;
-    const lastName    = document.getElementById('patient-last-name').value;
-    xmlhttp.open('POST', '../../Backend/Controllers/AddControllers/AddAppointment.php');
+    const firstName = document.getElementById('patient-first-name').value;
+    const lastName = document.getElementById('patient-last-name').value;
+    xmlhttp.open(
+        'POST',
+        '../../Backend/Controllers/AddControllers/AddAppointment.php'
+    );
     xmlhttp.setRequestHeader(
         'Content-type',
         'application/x-www-form-urlencoded'
@@ -19,21 +22,28 @@ function addPatient() {
     xmlhttp.send('firstName=' + firstName + '&lastName=' + lastName);
 }
 
+function addAppoitment() {
+    xmlhttp = new XMLHttpRequest();
+    const patientElement = document.getElementById('select-patients');
+    const patientId = patientElement.options[e.selectedIndex].value;
 
-function addAppoitment(){
-    var xmlhttp = new XMLHttpRequest();
-
-    const patientId = document.getElementById('select-patients-container').value;
     const phoneNumber = document.getElementById('phone').value;
-    const gender      = document.getElementById('gender').value;
-    const dentistId     = document.getElementById('select-dentists-container').value;
-    const clinicId      = document.getElementById('select-clinics-container').value;
-    const date        = document.getElementById('appoitment-date').value;
-    const time        = document.getElementById('appoitment-time').value;
+    const gender = document.getElementById('gender').value;
 
-    console.log("Hello+ "+ patientId);
+    const dentistElement = document.getElementById('select-dentists').value;
+    const dentistId = dentistElement.options[e.selectedIndex].value;
 
-    xmlhttp.open('POST', '../../Backend/Controllers/AddControllers/AddAppointment.php');
+    const clinicElement = document.getElementById('select-clinics').value;
+    const clinicId = clinicId.options[e.selectedIndex].value;
+    
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const cost = document.getElementById('cost').value;
+
+    xmlhttp.open(
+        'POST',
+        '../../Backend/Controllers/AddControllers/AddAppointment.php'
+    );
     xmlhttp.setRequestHeader(
         'Content-type',
         'application/x-www-form-urlencoded'
@@ -46,6 +56,18 @@ function addAppoitment(){
             ).innerHTML = this.responseText;
         }
     };
-    xmlhttp.send('patientId=' + patientId +'&date='+ date +'&time=' + time  +'&dentistId='+dentistId+ '&clinicId='+clinicId);
-
+    xmlhttp.send(
+        'patientId=' +
+            patientId +
+            '&date=' +
+            date +
+            '&time=' +
+            time +
+            '&dentistId=' +
+            dentistId +
+            '&clinicId=' +
+            clinicId +
+            '$cost=' +
+            cost
+    );
 }
