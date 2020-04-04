@@ -7,7 +7,11 @@
             rel="stylesheet"
             type="text/css"
         />
-        <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../assets/css/skeleton.css"
+        />
         <link
             rel="stylesheet"
             type="text/css"
@@ -17,15 +21,22 @@
     </head>
     <body>
         <ul class="nav">
-            <li><a  href="../index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
             <li><a href="queries.html">Queries</a></li>
             <li><a href="#">Manage Appointments</a></li>
             <li><a href="manage-patients.html">Manage Patients</a></li>
             <li><a class="active" href="#">Admin</a></li>
         </ul>
         <div class="container">
-
+            <div class="statement-container">
+                <div>
+                    <label for="sql-statement">SQL Injection Box</label>
+                    <textarea id="sql-statement" rows="4" cols="100"></textarea>
+                </div>
+                <button onclick="executeStatement()">Execute</button>
+                <div id="execute-result"></div>
+            </div>
         </div>
-
+        <script src="../assets/js/adminScript.js"></script>
     </body>
 </html>
