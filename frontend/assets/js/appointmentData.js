@@ -56,6 +56,8 @@
 //         dentistId);
 // }
 
+var dentistId = 0;
+
 function getAppointmentDetailsForEditOrDelete() {
     let xmlhttp = new XMLHttpRequest();
 
@@ -79,6 +81,108 @@ function getAppointmentDetailsForEditOrDelete() {
     xmlhttp.send();
 }
 
+function deteteAppointment(appId, rowId){
+    //let xmlhttp = new XMLHttpRequest();
+
+    console.log("Hello there: " + appId);
+    console.log("Hello: "+ rowId);
+    // $('#app-table').on('click', '.btn', function(){
+    //     $(this).closest('tr').remove();
+    // });
+
+    // xmlhttp.open(
+    //     'POST',
+    //     '../../Backend/Controllers/RemoveControllers/RemoveAppointment.php?'
+    // );
+
+    // xmlhttp.setRequestHeader(
+    //     'Content-type',
+    //     'application/x-www-form-urlencoded'
+    // );
+
+    // xmlhttp.send('appId=' + appId );
+}
+
+function editAppointmentPage(appId){
+    console.log(appId);
+    localStorage.setItem('objectToPass',appId);
+    location.replace("editAppointment.html");
+}
+
+
+function getDoctorsInAClinic(){
+    let xmlhttp = new XMLHttpRequest();
+
+    const e = document.getElementById('select-clinics');
+    const clinicId = e.options[e.selectedIndex].value;
+    console.log("Hey: " + clinicId);
+    
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetDoctorsByClinicId.php?clinicId=' +
+        clinicId, 
+        true
+    );
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(
+                'select-dentists'
+            ).innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.send();
+}
+
+
+function getReceptionistsInAClinic(){
+    let xmlhttp = new XMLHttpRequest();
+
+    const e = document.getElementById('select-clinics');
+    const clinicId = e.options[e.selectedIndex].value;
+    console.log("Hey: " + clinicId);
+    
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetDoctorsByClinicId.php?clinicId=' +
+        clinicId, 
+        true
+    );
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(
+                'select-dentists'
+            ).innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.send();
+}
+
+
+function chooseDoctor(id){
+    dentistId = id;
+    ko= document.getElementById("get-doctors-detalis-clinic");
+    div.parentNode.removeChild(ko);
+}
+
+
+function getAppointmentDetailsByAppId(appId){
+    let xmlhttp = new XMLHttpRequest();
+    
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetAppDetailsClinic.php?appId=' +
+        appId, 
+        true
+    );
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(
+                'get-app-details-clinic'
+            ).innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.send();
+}
 
 
 
