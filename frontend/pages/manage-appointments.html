@@ -35,18 +35,6 @@
                             </div>
                     </div>
                     <div>
-                        <label for="phone">Enter your phone number:</label>
-                        <input 
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            required
-                        />
-
-                    </div>
-                    
-
-                    <div>
                         <label for="date">Date:</label>
                         <input 
                             type="date"
@@ -82,28 +70,25 @@
                         </div>
                     </div>
 
-                    
-
-                    
-                    
-
                     <button onclick="addAppoitment()">Add Appoitment</button>
                     <div id="add-appointment-res"></div>
                 </div>
         </div>
         <br><br>
-        <div class="container">
-            <div class="query delete-appoitment">
-                <label for="fname">Choose the appointment that you want to delete:</label>
-                        <div class="select-button">
-                            <div id="select-appointment-container">
-                                <select name="" id="select-appointments"></select>
-                            </div>
-                        </div>
-                        <button onclick="deleteAppointments()">Delete Appoitment</button>
-                
+            <div class="query get-app-clinic">
+                <h2>
+                    Edit/Delete Appointments:
+                </h2>
+                <div class="select-button">
+                    <div id="select-clinics-container">
+                        <select id="select-clinics-2"></select>
+                    </div>
+                    <button onclick="getAppointmentDetailsForEditOrDelete()">
+                        Get Appointment Details
+                    </button>
+                </div>
+                <div id="get-app-details-clinic"></div>
             </div>
-        </div>
         <script src="../assets/js/addData.js"></script>
         <script src="../assets/js/getData.js"></script>
         <script src="../assets/js/appointmentData.js"></script>

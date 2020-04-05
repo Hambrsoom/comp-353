@@ -1,60 +1,113 @@
-window.onload = onLoad();
+// window.onload = onLoad();
 
-function onLoad() {
-    getAllAppointments();
-}
+// function onLoad() {
+//     getAllAppointments();
+// }
 
-function getAllAppointments() {
+// function getAllAppointments() {
+//     let xmlhttp = new XMLHttpRequest();
+
+//     xmlhttp.onreadystatechange = function() {
+//         if (this.readyState == 4 && this.status == 200) {
+//             document.getElementById(
+//                 'get-all-appointments'
+//             ).innerHTML = this.responseText;
+//         }
+//     };
+//     xmlhttp.open(
+//         'GET',
+//         '../../Backend/Controllers/QueryControllers/GetAllAppointments.php',
+//         true
+//     );
+//     xmlhttp.send();
+// }
+
+
+// function getAllAppointmentsForASpecificWeek() {
+//     let xmlhttp = new XMLHttpRequest();
+    
+//     const dentistId = document.getElementById('select-dentists').value;
+//     var date = document.getElementById('app-date-doctor').value;
+//     date = date.substring(6);
+//     console.log(dentistId);
+//     console.log(date);
+
+//     xmlhttp.open(
+//         'POST',
+//         '../../Backend/Controllers/QueryControllers/GetAppointmentsForDoctor.php'
+//     );
+//     xmlhttp.setRequestHeader(
+//         'Content-type',
+//         'application/x-www-form-urlencoded'
+//     );
+
+//     xmlhttp.onreadystatechange = function() {
+//         if (this.readyState == 4 && this.status == 200) {
+//             document.getElementById(
+//                 'get-all-appointments-for-doctor'
+//             ).innerHTML = this.responseText;
+//         }
+//     };
+
+//     xmlhttp.send( 
+//         '&date=' +
+//         date +
+//         '&dentistId=' +
+//         dentistId);
+// }
+
+function getAppointmentDetailsForEditOrDelete() {
     let xmlhttp = new XMLHttpRequest();
 
+    const e = document.getElementById('select-clinics-2');
+    const selectedClinicId = e.options[e.selectedIndex].value;
+    console.log(selectedClinicId);
+    
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetAllAppDetailsForDeleteOrEdit.php?clinicID=' +
+            selectedClinicId,
+        true
+    );
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById(
-                'get-all-appointments'
+                'get-app-details-clinic'
             ).innerHTML = this.responseText;
         }
     };
-    xmlhttp.open(
-        'GET',
-        '../../Backend/Controllers/QueryControllers/GetAllAppointments.php',
-        true
-    );
     xmlhttp.send();
 }
 
 
-function getAllAppointmentsForASpecificWeek() {
-    let xmlhttp = new XMLHttpRequest();
-    
-    const dentistId = document.getElementById('select-dentists').value;
-    var date = document.getElementById('app-date-doctor').value;
-    date = date.substring(6);
-    console.log(dentistId);
-    console.log(date);
 
-    xmlhttp.open(
-        'POST',
-        '../../Backend/Controllers/QueryControllers/GetAppointmentsForDoctor.php'
-    );
-    xmlhttp.setRequestHeader(
-        'Content-type',
-        'application/x-www-form-urlencoded'
-    );
 
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById(
-                'get-all-appointments-for-doctor'
-            ).innerHTML = this.responseText;
-        }
-    };
 
-    xmlhttp.send( 
-        '&date=' +
-        date +
-        '&dentistId=' +
-        dentistId);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function findTheDateForSunday(dateValue){
     var d = new Date(dateValue);

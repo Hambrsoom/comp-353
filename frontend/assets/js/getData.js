@@ -73,23 +73,38 @@ function getSelectPatients() {
 //get clinic names
 function getSelectClinics() {
     let xmlhttp = new XMLHttpRequest();
+    console.log("Cuty Pie");
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let res = JSON.parse(this.response);
 
             let optionsList = document.getElementById('select-clinics').options;
+            let optionsList2 = null;
+            if(document.getElementById('select-clinics-2')){
+                optionsList2 = document.getElementById('select-clinics-2').options;
+            }
+            
             let options = [];
+            console.log("I reached here  :3 ");
             res.forEach(clinic => {
+                console.log("1  " + clinic.clinicName);
                 options.push({
                     text: clinic.clinicName,
                     value: clinic.clinicID
                 });
             });
 
-            options.forEach(option =>
+            options.forEach(option =>{
                 optionsList.add(
                     new Option(option.text, option.value, option.selected)
-                )
+                );
+                if(optionsList2){
+                    optionsList2.add(
+                        new Option(option.text, option.value, option.selected)
+                    )
+                }
+                
+            }
             );
         }
     };

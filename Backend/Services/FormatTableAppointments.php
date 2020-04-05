@@ -12,7 +12,10 @@
                 foreach ($row as $key => $value) {
                     $output = $output.'<th>' . $key . '</th>';
                 }
+                $output =$output.'<th></th>';
+                $output =$output.'<th></th>';
                 $output = $output.' </tr>
+                
                 </thead>
                 <tbody>';
                 $firstLoop = true;
@@ -22,6 +25,9 @@
             foreach ($row as $key => $value) {
                 $output = $output.'<td>'. $value .'</td>';
             }
+            $output = $output.'<td><button>Delete</button></td>';
+            $output = $output.'<td><button>Edit</button></td>';
+            
             $output = $output.'</tr>';
         }
 
