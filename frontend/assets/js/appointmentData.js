@@ -1,8 +1,9 @@
-// window.onload = onLoad();
+window.onload = onLoad();
 
-// function onLoad() {
-//     getAllAppointments();
-// }
+function onLoad() {
+    // getDoctorsInAClinic();
+    // getReceptionistsInAClinic();
+}
 
 // function getAllAppointments() {
 //     let xmlhttp = new XMLHttpRequest();
@@ -135,10 +136,17 @@ function getDoctorsInAClinic(){
 
 
 function getReceptionistsInAClinic(){
-    let xmlhttp = new XMLHttpRequest();
 
     const e = document.getElementById('select-clinics');
     const clinicId = e.options[e.selectedIndex].value;
+    
+    getDoctorsByClinicID(clinicId)
+    getRecpetionistsByClinicID(clinicId)
+}
+
+function getDoctorsByClinicID(clinicId){
+    let xmlhttp = new XMLHttpRequest();
+
     console.log("Hey: " + clinicId);
     
     xmlhttp.open(
@@ -158,10 +166,23 @@ function getReceptionistsInAClinic(){
 }
 
 
-function chooseDoctor(id){
-    dentistId = id;
-    ko= document.getElementById("get-doctors-detalis-clinic");
-    div.parentNode.removeChild(ko);
+function getRecpetionistsByClinicID(clinicId){
+    let xmlhttp = new XMLHttpRequest();
+    console.log("Hey: " + clinicId);
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetReceptionistsByClinicId.php?clinicId=' +
+        clinicId, 
+        true
+    );
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(
+                'select-receptionists'
+            ).innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.send();
 }
 
 
