@@ -8,9 +8,7 @@
     $clinicId  = $_POST['clinicId'];
     $receptionistId = 8;
     $billId   = 10;
-
     $emptyValue = NULL;
-
     $sql = "INSERT INTO appointments(missed,date,time,patientID,dentistID,clinicID,receptionistID,billID) VALUES('".$emptyValue."','".$date."','".$time."','".$patientId."','".$dentistId."','".$clinicId."','".$receptionistId."','".$billId."');"; 
 
     if ($con->query($sql)){

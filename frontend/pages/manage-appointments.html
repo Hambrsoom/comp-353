@@ -35,55 +35,6 @@
                             </div>
                     </div>
                     <div>
-                        <label for="phone">Enter your phone number:</label>
-                        <input 
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            required
-                        />
-
-                    </div>
-                    <div>
-                        <label type="text" id="gender" name="gender">Gender</label>
-                        <input 
-                            type="radio"
-                            id="male"
-                            name="gender"
-                            value="male"> Male
-                        <input 
-                            type="radio"
-                            id="female"
-                            name="gender"
-                            value="female"
-                        /> Female
-                        <input 
-                            type="radio"
-                            id="other"
-                            name="gender"
-                            value="other"> Other
-                    </div>
-
-                    <div>
-                        <label for="fname">Dentist</label>
-                        <div class="select-button">
-                            <div id="select-dentists-container">
-                                    <select name="" id="select-dentists"></select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="fname">Clinic:</label>
-                        <div class="select-button">
-                            <div id="select-clinics-container">
-                                <select name="" id="select-clinics"></select>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
                         <label for="date">Date:</label>
                         <input 
                             type="date"
@@ -97,12 +48,26 @@
                             name="appoitment-time"
                         /> 
                     </div>
+
                     <div>
-                        <label for="cost">Cost:</label>
-                        <input type="number" id="cost" min="1" step="any" />
-                    </div>
-                    <div>
-                        <label for="cost">Appointment Made by:</label> 
+                        <label for="fname">Clinic:</label>
+                        <div class="select-button">
+                            <div id="select-clinics-container">
+                                <select name="" id="select-clinics"></select>
+
+                            </div>
+                        </div>
+                        <div>
+                            <label for="fname">Dentist</label>
+                            <div class="select-button">
+                                <div id="select-dentists-container">
+                                        <select name="" id="select-dentists"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="cost">Appointment Made by:</label> 
+                        </div>
                     </div>
 
                     <button onclick="addAppoitment()">Add Appoitment</button>
@@ -110,18 +75,20 @@
                 </div>
         </div>
         <br><br>
-        <div class="container">
-            <div class="query delete-appoitment">
-                <label for="fname">Choose the appointment that you want to delete:</label>
-                        <div class="select-button">
-                            <div id="select-appointment-container">
-                                <select name="" id="select-appointments"></select>
-                            </div>
-                        </div>
-                        <button onclick="deleteAppointments()">Delete Appoitment</button>
-                
+            <div class="query get-app-clinic">
+                <h2>
+                    Edit/Delete Appointments:
+                </h2>
+                <div class="select-button">
+                    <div id="select-clinics-container">
+                        <select id="select-clinics-2"></select>
+                    </div>
+                    <button onclick="getAppointmentDetailsForEditOrDelete()">
+                        Get Appointment Details
+                    </button>
+                </div>
+                <div id="get-app-details-clinic"></div>
             </div>
-        </div>
         <script src="../assets/js/addData.js"></script>
         <script src="../assets/js/getData.js"></script>
         <script src="../assets/js/appointmentData.js"></script>
