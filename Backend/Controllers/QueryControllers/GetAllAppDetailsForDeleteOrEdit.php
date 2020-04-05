@@ -1,8 +1,6 @@
-
 <?php
-    require('../../Services/SelectQueryService.php');
+    require('../../Services/SelectQueryServiceAppointments.php');
     $clinicID = intval($_GET['clinicID']);
-    $date = $_GET['appDate'];
 
 
 
@@ -20,9 +18,9 @@
     patients as p,
     clinics as c,
     receptionists as r
-    WHERE app.clinicID = '".$clinicID."' AND app.date='".$date."' AND app.dentistID = den.dentistID AND app.dentistID = den.dentistID AND p.patientID = app.patientID AND r.receptionistsID = app.receptionistID AND c.clinicID = app.clinicID;";
+    WHERE app.clinicID = '".$clinicID."' AND app.dentistID = den.dentistID AND app.dentistID = den.dentistID AND p.patientID = app.patientID AND r.receptionistsID = app.receptionistID AND c.clinicID = app.clinicID;";
 
 
-    echo executeSelectStatement($sql);  
+    echo executeSelectStatementForAppointments($sql);  
 
 ?>
