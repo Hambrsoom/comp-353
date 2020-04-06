@@ -52,3 +52,10 @@ ul {
       display: flex;
       flex-direction: column;
   }
+
+  .add-treatment-input {
+      margin: 20px 0px;
+  }
+  .add-treatment-input button{
+      margin: 10px 0px;
+  }

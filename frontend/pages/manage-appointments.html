@@ -20,7 +20,8 @@
             <li><a  href="../index.html">Home</a></li>
             <li><a href="queries.html">Queries</a></li>
             <li><a class="active"  href="#">Manage Appointments</a></li>
-            <li><a   href="manage-patients.html">Manage Patients</a></li>
+            <li><a href="manage-patients.html">Manage Patients</a></li>
+            <li><a href="manage-treatments.html">Manage Treatments</a></li>
             <li><a href="admin.html">Admin</a></li>
         </ul>
         <div class="container">
@@ -42,11 +43,7 @@
                             name="appoitment-date"
                         />
                         <label for="time">Time:</label>
-                        <input 
-                            type="time"
-                            id="appoitment-time"
-                            name="appoitment-time"
-                        /> 
+                        <select name="time" id="appointment-time"></select>
                     </div>
                     <div>
                         <label for="fname">Clinic:</label>
@@ -77,7 +74,7 @@
                         </div>
                     </div>
 
-                    <button onclick="addAppoitment()">Add Appoitment</button>
+                    <button onclick="addAppointment()">Add Appointment</button>
                     <div id="add-appointment-res"></div>
                 </div>
         </div>

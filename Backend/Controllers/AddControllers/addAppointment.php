@@ -14,7 +14,7 @@
     if ($con->query($sql)){
         echo 'Appointment added successfully';
     } else {
-        echo 'Error adding patient';
+        echo 'Error adding appointment';
     }
     $con->close();
 ?>

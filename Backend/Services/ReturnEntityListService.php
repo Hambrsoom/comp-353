@@ -5,7 +5,7 @@
         $res=[];
         if ($result = $con->query($sql)) {
             /* fetch associative array */
-            while ($row = mysqli_fetch_array($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 array_push($res,$row);
         }
             mysqli_free_result($result);

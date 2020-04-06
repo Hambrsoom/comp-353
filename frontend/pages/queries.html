@@ -7,7 +7,11 @@
             rel="stylesheet"
             type="text/css"
         />
-        <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../assets/css/skeleton.css"
+        />
         <link
             rel="stylesheet"
             type="text/css"
@@ -18,9 +22,10 @@
     <body>
         <ul class="nav">
             <li><a href="../index.html">Home</a></li>
-            <li><a class="active"  href="#">Queries</a></li>
+            <li><a class="active" href="#">Queries</a></li>
             <li><a href="manage-appointments.html">Manage Appointments</a></li>
             <li><a href="manage-patients.html">Manage Patients</a></li>
+            <li><a href="manage-treatments.html">Manage Treatments</a></li>
             <li><a href="admin.html">Admin</a></li>
         </ul>
         <div class="container">
@@ -30,7 +35,6 @@
                 <div id="get-all-dentists"></div>
                 <div id="getAllDentists"></div>
             </div>
-            <!-- wip -->
             <div class="query get-app-details">
                 <h2>
                     b. Get details of all appointments for a given dentist for a
@@ -40,18 +44,22 @@
                     <div id="select-dentists-container">
                         <select id="select-dentists"></select>
                     </div>
-                    <input type="week" name="week" id="app-date-doctor"
-                         min="2020-W01" required>
+                    <input
+                        type="week"
+                        name="week"
+                        id="app-date-doctor"
+                        min="2020-W01"
+                        required
+                    />
                     <button onclick="getAllAppointmentsForASpecificWeek()">
                         Get Appointment Details
                     </button>
                 </div>
 
-                    <div id="get-all-appointments-for-doctor"></div>
+                <div id="get-all-appointments-for-doctor"></div>
 
                 <div id="get-app-details"></div>
             </div>
-            <!-- end of wip -->
             <div class="query get-app-clinic">
                 <h2>
                     c. Get details of all appointments at a given clinic on a
@@ -84,12 +92,13 @@
                         Get Appointment Details
                     </button>
                 </div>
-                <div id="get-app-details-patient">
-                </div>
+                <div id="get-app-details-patient"></div>
             </div>
             <div class="query get-missed-app">
-                <h2>e. Get the number of missed appointments for each patient (only for patients who have
-                    missed at least 1 appointment).</h2>
+                <h2>
+                    e. Get the number of missed appointments for each patient
+                    (only for patients who have missed at least 1 appointment).
+                </h2>
                 <div class="select-button">
                     <button onclick="getMissedAppointments()">
                         Get Missed Appointments
@@ -98,14 +107,11 @@
                 <div id="get-missed-apps"></div>
             </div>
             <div class="query get-treatments-app">
-                <h2>f. Get details of all the treatments made during a given appointment.</h2>
-                <div class="select-button">
-                    <div id="select-appointments-container"></div>
-                    <button onclick="getTreatmentsForAppointments()">
-                        Get Treatments
-                    </button>
-                </div>
-                <div id="get-app-details-patient"></div>
+                <h2>
+                    f. Get details of all the treatments made during a given
+                    appointment.
+                </h2>
+                <div id="appointments-table"></div>
             </div>
             <div class="query get-unpaid-bills">
                 <h2>g. Get details of all unpaid bills.</h2>
@@ -113,16 +119,8 @@
                 <button onclick="getUnpaidBills()">Get Unpaid Bills</button>
                 <div id="get-unpaid-bills"></div>
             </div>
-                <div class="query get-receptionists">
-                    <h2>g. Get all receptionists:'</h2>
-                    <button onclick="getAllReceptionists()">Get All Receptionists</button>
-                    <div id="get-all-receptionists"></div>
-                    <div id="getAllReceptionists"></div>
-                </div>
         </div>
 
         <script src="../assets/js/getData.js"></script>
-        <script src="../assets/js/appointmentData.js"></script>
-
     </body>
 </html>
