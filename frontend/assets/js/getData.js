@@ -73,7 +73,6 @@ function getSelectPatients() {
 //get clinic names
 function getSelectClinics() {
     let xmlhttp = new XMLHttpRequest();
-    console.log("Cuty Pie");
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let res = JSON.parse(this.response);
@@ -172,10 +171,6 @@ function getUnpaidBills() {
 
 function getAppointmentDetailsForClinic() {
     let xmlhttp = new XMLHttpRequest();
-
-    const e = document.getElementById('select-clinics');
-    const selectedClinicId = e.options[e.selectedIndex].value;
-    console.log(selectedClinicId);
     
     const date = document.getElementById('app-date').value;
     xmlhttp.open(

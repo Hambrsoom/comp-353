@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Manage Appointments</title>
+        <title>Edit Appointments</title>
         <link
             href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
             rel="stylesheet"
@@ -20,8 +20,7 @@
             <li><a  href="../index.html">Home</a></li>
             <li><a href="queries.html">Queries</a></li>
             <li><a class="active"  href="#">Manage Appointments</a></li>
-            <li><a href="manage-patients.html">Manage Patients</a></li>
-            <li><a href="manage-treatments.html">Manage Treatments</a></li>
+            <li><a   href="manage-patients.html">Manage Patients</a></li>
             <li><a href="admin.html">Admin</a></li>
         </ul>
         <div class="container">
@@ -49,17 +48,15 @@
                             name="appoitment-time"
                         /> 
                     </div>
+
                     <div>
                         <label for="fname">Clinic:</label>
                         <div class="select-button">
                             <div id="select-clinics-container">
                                 <select name="" id="select-clinics"></select>
-                                <button onclick="getReceptionistsAndDoctorsInAClinic()">
-                                    Choose Doctor & Receptionit
-                                </button>
+
                             </div>
                         </div>
-                        <div id="get-doctors-detalis-clinic"></div>
                         <div>
                             <label for="fname">Dentist</label>
                             <div class="select-button">
@@ -69,36 +66,17 @@
                             </div>
                         </div>
                         <div>
-                            <label for="Receptionit">Appointment Made by:</label>
-                            <div class="select-button">
-                                <div id="select-receptionists-container">
-                                        <select name="" id="select-receptionists"></select>
-                                </div>
-                            </div>
+                            <label for="cost">Appointment Made by:</label> 
                         </div>
                     </div>
 
-                    <button onclick="addAppoitment()">Add Appoitment</button>
+                    <button onclick="editAppoitment()">Add Appoitment</button>
                     <div id="add-appointment-res"></div>
                 </div>
         </div>
-        <br><br>
-            <div class="query get-app-clinic">
-                <h2>
-                    Edit/Delete Appointments:
-                </h2>
-                <div class="select-button">
-                    <div id="select-clinics-container">
-                        <select id="select-clinics-2"></select>
-                    </div>
-                    <button onclick="getAppointmentDetailsForEditOrDelete()">
-                        Get Appointment Details
-                    </button>
-                </div>
-                <div id="get-app-details-clinic"></div>
-            </div>
         <script src="../assets/js/addData.js"></script>
-        <!-- <script src="../assets/js/getData.js"></script> -->
+        <script src="../assets/js/getData.js"></script>
+        <script src="../assets/js/editAppointmentPage.js"></script>
         <script src="../assets/js/appointmentData.js"></script>
     </body>
 </html>

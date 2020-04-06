@@ -1,39 +1,31 @@
 <?php 
-
-    function outputAppointmentsTable($result) {
-
+    function outputTable($result) {
         $output = '';
         $firstLoop = false;
-        $rowId =1;
         while ($row = $result->fetch_assoc()) {
             if (!$firstLoop) {
-            $output = $output.'<table id="app-table" class="u-full-width">
+            $output = $output.'<table class="u-full-width">
                 <thead>
                   <tr>';
                 foreach ($row as $key => $value) {
                     $output = $output.'<th>' . $key . '</th>';
                 }
-                $output =$output.'<th></th>';
-                $output =$output.'<th></th>';
                 $output = $output.' </tr>
                 </thead>
                 <tbody>';
                 $firstLoop = true;
             }
 
-            $appId = 0;
             $output = $output.'<tr>';
+            $id   = 0;
             foreach ($row as $key => $value) {
                 $output = $output.'<td>'. $value .'</td>';
-                if($key == "Appointment ID"){
-                    $appId = $value;
+                if($key == "dentistID"){
+                    $id= $value;
                 }
             }
-            $output = $output.'<td><button type="button" class="btn" onclick="deteteAppointment('.$appId.','.$rowId.')" >Delete</button></td>';
-            $output = $output.'<td><button type="button" class="btn" onclick="editAppointmentPage('.$appId.')">Edit</button></td>';
-            
+            $output = $output.'<td><button type="button" class="btn" onclick="chooseDoctor('.$id.')" >Choose</button></td>';
             $output = $output.'</tr>';
-            $rowId++;
         }
 
         $output = $output.'<tbody>
