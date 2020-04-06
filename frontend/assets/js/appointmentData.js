@@ -1,8 +1,8 @@
 window.onload = onLoad();
 
 function onLoad() {
-    // getDoctorsInAClinic();
-    // getReceptionistsInAClinic();
+    getSelectClinics();
+    getSelectPatients();
 }
 
 // function getAllAppointments() {
@@ -135,13 +135,13 @@ function getDoctorsInAClinic(){
 }
 
 
-function getReceptionistsInAClinic(){
+function getReceptionistsAndDoctorsInAClinic(){
 
     const e = document.getElementById('select-clinics');
     const clinicId = e.options[e.selectedIndex].value;
     
-    getDoctorsByClinicID(clinicId)
-    getRecpetionistsByClinicID(clinicId)
+    getDoctorsByClinicID(clinicId);
+    getRecpetionistsByClinicID(clinicId);
 }
 
 function getDoctorsByClinicID(clinicId){
@@ -149,19 +149,39 @@ function getDoctorsByClinicID(clinicId){
 
     console.log("Hey: " + clinicId);
     
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let res = JSON.parse(this.response);
+
+            let optionsList = document.getElementById('select-dentists')
+                .options;
+
+            for (i = optionsList.length-1; i >= 0; i--) {
+                optionsList.remove(i);
+            }
+            let options = [];
+            res.forEach(dentist => {
+                options.push({
+                    text: dentist.firstName + ' ' + dentist.lastName,
+                    value: dentist.dentistID
+                });
+            });
+
+            options.forEach(option =>
+                optionsList.add(
+                    new Option(option.text, option.value, option.selected)
+                )
+            );
+        }
+    };
+
     xmlhttp.open(
         'GET',
         '../../Backend/Controllers/QueryControllers/GetDoctorsByClinicId.php?clinicId=' +
         clinicId, 
         true
     );
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById(
-                'select-dentists'
-            ).innerHTML = this.responseText;
-        }
-    };
+
     xmlhttp.send();
 }
 
@@ -169,19 +189,40 @@ function getDoctorsByClinicID(clinicId){
 function getRecpetionistsByClinicID(clinicId){
     let xmlhttp = new XMLHttpRequest();
     console.log("Hey: " + clinicId);
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let res = JSON.parse(this.response);
+
+            let optionsList = document.getElementById('select-receptionists')
+                .options;
+
+            for (i = optionsList.length-1; i >= 0; i--) {
+                optionsList.remove(i);
+            }
+            let options = [];
+            res.forEach(receptionist => {
+                options.push({
+                    text: receptionist.firstName + ' ' + receptionist.lastName,
+                    value: receptionist.receptionistsID
+                });
+            });
+
+            options.forEach(option =>
+                optionsList.add(
+                    new Option(option.text, option.value, option.selected)
+                )
+            );
+        }
+    };
+
     xmlhttp.open(
         'GET',
         '../../Backend/Controllers/QueryControllers/GetReceptionistsByClinicId.php?clinicId=' +
         clinicId, 
         true
     );
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById(
-                'select-receptionists'
-            ).innerHTML = this.responseText;
-        }
-    };
+
     xmlhttp.send();
 }
 
@@ -264,6 +305,92 @@ function findTheDateForSaturday(dateValue){
     endOfWeek = d.getFullYear()+'-'+month+'-'+d.getDate();
     console.log("begin: "+ endOfWeek);
     return endOfWeek;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getSelectClinics() {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let res = JSON.parse(this.response);
+
+            let optionsList = document.getElementById('select-clinics').options;
+            let optionsList2 = null;
+            if(document.getElementById('select-clinics-2')){
+                optionsList2 = document.getElementById('select-clinics-2').options;
+            }
+            
+            let options = [];
+            console.log("I reached here  :3 ");
+            res.forEach(clinic => {
+                console.log("1  " + clinic.clinicName);
+                options.push({
+                    text: clinic.clinicName,
+                    value: clinic.clinicID
+                });
+            });
+
+            options.forEach(option =>{
+                optionsList.add(
+                    new Option(option.text, option.value, option.selected)
+                );
+                if(optionsList2){
+                    optionsList2.add(
+                        new Option(option.text, option.value, option.selected)
+                    )
+                }
+                
+            }
+            );
+        }
+    };
+    xmlhttp.open('GET', '../../Backend/Controllers/GetSelectClinics.php', true);
+    xmlhttp.send();
+}
+
+
+function getSelectPatients() {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let res = JSON.parse(this.response);
+
+            let optionsList = document.getElementById('select-patients')
+                .options;
+            let options = [];
+            res.forEach(patient => {
+                options.push({
+                    text: patient.firstName + ' ' + patient.lastName,
+                    value: patient.patientID
+                });
+            });
+
+            options.forEach(option =>
+                optionsList.add(
+                    new Option(option.text, option.value, option.selected)
+                )
+            );
+        }
+    };
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/GetSelectPatients.php',
+        true
+    );
+    xmlhttp.send();
 }
 
 

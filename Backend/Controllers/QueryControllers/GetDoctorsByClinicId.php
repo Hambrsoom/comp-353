@@ -1,9 +1,11 @@
 <?php     
         require('../../Services/ReturnEntityListService.php');
+
         $clinicID = intval($_GET['clinicId']);
         $sql = "SELECT 
         dentistID, 
-        concat (d.firstName,' ',d.lastName) as `Dentist Name`
+        d.firstName as `firstName`,
+        d.lastName  as `lastName`
         FROM employs as empl,
         dentists as d,
         clinics as c 

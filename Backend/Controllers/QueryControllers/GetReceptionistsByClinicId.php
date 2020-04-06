@@ -4,8 +4,9 @@
 
         $clinicID = intval($_GET['clinicId']);
         $sql = "SELECT 
-        receptionistsID, 
-        concat (resp.firstName,' ',resp.lastName) as `Receptionist Name`
+        receptionistsID,
+        resp.firstName as `firstName`,
+        resp.lastName  as `lastName` 
         FROM employs as empl,
         receptionists as resp,
         clinics as c 
