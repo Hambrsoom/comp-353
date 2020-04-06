@@ -6,30 +6,23 @@ function onLoad() {
     //populateTimeDropdown();
 }
 
-// function getAllAppointments() {
-//     let xmlhttp = new XMLHttpRequest();
+function getAllAppointments() {
+    let xmlhttp = new XMLHttpRequest();
 
-//     xmlhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById(
-//                 'get-all-appointments'
-//             ).innerHTML = this.responseText;
-//         }
-//     };
-//     xmlhttp.open(
-//         'GET',
-//         '../../Backend/Controllers/QueryControllers/GetAllAppointments.php',
-//         true
-//     );
-//     xmlhttp.send();
-// }
-
-
-
-
-
-
-
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(
+                'get-all-appointments'
+            ).innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetAllAppointments.php',
+        true
+    );
+    xmlhttp.send();
+}
 
 var dentistId = 0;
 
@@ -57,29 +50,33 @@ function getAppointmentDetailsForEditOrDelete() {
 }
 
 function deteteAppointment(appId, rowId){
-    //let xmlhttp = new XMLHttpRequest();
+    let xmlhttp = new XMLHttpRequest();
 
     console.log("Hello there: " + appId);
     console.log("Hello: "+ rowId);
-    // $('#app-table').on('click', '.btn', function(){
-    //     $(this).closest('tr').remove();
-    // });
 
-    // xmlhttp.open(
-    //     'POST',
-    //     '../../Backend/Controllers/RemoveControllers/RemoveAppointment.php?'
-    // );
+    xmlhttp.open(
+        'POST',
+        '../../Backend/Controllers/RemoveControllers/RemoveAppointment.php?'
+    );
 
-    // xmlhttp.setRequestHeader(
-    //     'Content-type',
-    //     'application/x-www-form-urlencoded'
-    // );
+    xmlhttp.setRequestHeader(
+        'Content-type',
+        'application/x-www-form-urlencoded'
+    );
 
-    // xmlhttp.send('appId=' + appId );
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            getAppointmentDetailsForEditOrDelete();
+        }
+    };
+
+    xmlhttp.send('appId=' + appId );
+   
 }
 
 function editAppointmentPage(appId){
-    console.log(appId);
+    console.log("editPage: " + appId);
     localStorage.setItem('objectToPass',appId);
     location.replace("editAppointment.html");
 }
@@ -238,9 +235,7 @@ function getSelectClinics() {
             }
             
             let options = [];
-            console.log("I reached here  :3 ");
             res.forEach(clinic => {
-                console.log("1  " + clinic.clinicName);
                 options.push({
                     text: clinic.clinicName,
                     value: clinic.clinicID
@@ -305,8 +300,7 @@ function getDoctorAvailabilityforADate(){
     let xmlhttp = new XMLHttpRequest();
     let date = document.getElementById('appoitment-date').value;
     const dentistId = document.getElementById('select-dentists').value;
-    console.log("Date: "+ date);
-    console.log("Doctor: "+ dentistId);
+
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let res = JSON.parse(this.response);
@@ -322,10 +316,7 @@ function getDoctorAvailabilityforADate(){
             
             res.forEach(app => {
                 console.log("1  " + app.time);
-                doctorAvailabilities.push({
-                    text: app.appointmentsID,
-                    value: app.time
-                });
+                doctorAvailabilities.push(app.time);
             });
             populateTimeDropdown(doctorAvailabilities,options, optionsList);
         }
@@ -348,8 +339,6 @@ function populateTimeDropdown(doctorAvailabilities,options,optionsList) {
         }
         timeValue = hours + ':' + minutes + ':00';
         if(!checkIfDoctorHasAppointment(doctorAvailabilities,timeValue)) {
-            console.log("Check: "+ !checkIfDoctorHasAppointment(doctorAvailabilities,timeValue));
-            console.log("Time is: "+ timeValue);
             options.push({
                     text: hours + ':' + minutes,
                     value: hours + ':' + minutes + ':00'
@@ -363,14 +352,13 @@ function populateTimeDropdown(doctorAvailabilities,options,optionsList) {
 }
 
 function checkIfDoctorHasAppointment(doctorAvailabilities, time){
+    var bool = false;
     doctorAvailabilities.forEach(option =>{
-        if(option.value === time){
-            console.log("I found the time: "+ time);
-            return true;
+        if(option == time){
+            bool = true;
         }     
     });
-    return false;
-
+    return bool;
 }
 
 

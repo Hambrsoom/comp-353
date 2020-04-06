@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Edit Appointments</title>
+        <title>Manage Appointments</title>
         <link
             href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
             rel="stylesheet"
@@ -20,12 +20,13 @@
             <li><a  href="../index.html">Home</a></li>
             <li><a href="queries.html">Queries</a></li>
             <li><a class="active"  href="#">Manage Appointments</a></li>
-            <li><a   href="manage-patients.html">Manage Patients</a></li>
+            <li><a href="manage-patients.html">Manage Patients</a></li>
+            <li><a href="manage-treatments.html">Manage Treatments</a></li>
             <li><a href="admin.html">Admin</a></li>
         </ul>
         <div class="container">
             <div class="query add-appoitment">
-                <h2>Make An Appointment</h2>
+                <h2>Edit An Appointment</h2>
                 <div class="add-appointment-input">
                     <div>
                         <label for="fname">First name</label>
@@ -35,28 +36,16 @@
                             </div>
                     </div>
                     <div>
-                        <label for="date">Date:</label>
-                        <input 
-                            type="date"
-                            id="appoitment-date"
-                            name="appoitment-date"
-                        />
-                        <label for="time">Time:</label>
-                        <input 
-                            type="time"
-                            id="appoitment-time"
-                            name="appoitment-time"
-                        /> 
-                    </div>
-
-                    <div>
                         <label for="fname">Clinic:</label>
                         <div class="select-button">
                             <div id="select-clinics-container">
                                 <select name="" id="select-clinics"></select>
-
+                                <button onclick="getReceptionistsAndDoctorsInAClinic()">
+                                    Choose Doctor & Receptionit
+                                </button>
                             </div>
                         </div>
+                        <div id="get-doctors-detalis-clinic"></div>
                         <div>
                             <label for="fname">Dentist</label>
                             <div class="select-button">
@@ -66,17 +55,44 @@
                             </div>
                         </div>
                         <div>
-                            <label for="cost">Appointment Made by:</label> 
+                            <label for="Receptionit">Appointment Made by:</label>
+                            <div class="select-button">
+                                <div id="select-receptionists-container">
+                                        <select name="" id="select-receptionists"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="date">Date:</label>
+                            <input 
+                                type="date"
+                                id="appoitment-date"
+                                name="appoitment-date"
+                            />
+                            <button onclick="getDoctorAvailabilityforADate()">
+                                Choose Time
+                            </button>
+                        </div>
+                        <div>
+                            <label for="time">Time:</label>
+                            <select name="time" id="appointment-time"></select>
                         </div>
                     </div>
 
-                    <button onclick="editAppoitment()">Add Appoitment</button>
+                    <div>
+                        <label for="Receptionit">Choose Treatment:</label>
+                        <div class="select-button">
+                            <div id="select-treatment-container">
+                                    <select name="" id="select-treatments"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="editAppointment()">Edit Appointment</button>
                     <div id="add-appointment-res"></div>
                 </div>
         </div>
         <script src="../assets/js/addData.js"></script>
-        <script src="../assets/js/getData.js"></script>
         <script src="../assets/js/editAppointmentPage.js"></script>
-        <script src="../assets/js/appointmentData.js"></script>
     </body>
 </html>
