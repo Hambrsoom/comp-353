@@ -21,6 +21,7 @@
             <li><a href="queries.html">Queries</a></li>
             <li><a href="manage-appointments.html">Manage Appointments</a></li>
             <li><a class="active"  href="#">Manage Patients</a></li>
+            <li><a href="manage-treatments.html">Manage Treatments</a></li>
             <li><a href="admin.html">Admin</a></li>
         </ul>
         <div class="container">
@@ -41,35 +42,6 @@
                             type="text"
                             id="patient-last-name"
                             name="lname"
-                        />
-                    </div>
-
-                    <div>
-                        <label type="text" id="gender" name="gender">Gender</label>
-                        <input 
-                            type="radio"
-                            id="male"
-                            name="gender"
-                            value="male"> Male
-                        <input 
-                            type="radio"
-                            id="female"
-                            name="gender"
-                            value="female"
-                        /> Female
-                        <input 
-                            type="radio"
-                            id="other"
-                            name="gender"
-                            value="other"> Other
-                    </div>
-                    <div>
-                        <label for="phone">Enter your phone number:</label>
-                        <input 
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            required
                         />
                     </div>
                     <button onclick="addPatient()">Add Patient</button>
