@@ -46,3 +46,9 @@ ul {
   .add-patient-input button{
       align-self: flex-end;
   }
+
+
+  .statement-container{
+      display: flex;
+      flex-direction: column;
+  }
