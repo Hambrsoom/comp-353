@@ -3,6 +3,7 @@ window.onload = onLoad();
 function onLoad() {
     getSelectClinics();
     getSelectPatients();
+    populateTimeDropdown();
 }
 
 // function getAllAppointments() {
@@ -22,6 +23,37 @@ function onLoad() {
 //     );
 //     xmlhttp.send();
 // }
+
+function populateTimeDropdown() {
+    var optionsList = document.getElementById('appointment-time').options;
+    var hours, minutes;
+    let options = [];
+
+    for(var i = 540; i <= 1020; i += 30){
+        hours = Math.floor(i / 60);
+        minutes = i % 60;
+        if (minutes < 10){
+            minutes = '0' + minutes; // adding leading zero
+        }
+        // hours = hours % 12;
+        if (hours === 0){
+            hours = 12;
+        }
+        options.push({
+            text: hours + ':' + minutes,
+            value: hours + ':' + minutes + ':00'
+        });
+    }
+
+
+    options.forEach(option =>
+        optionsList.add(
+            new Option(option.text, option.value, option.selected)
+        ));
+
+    }
+
+
 
 
 

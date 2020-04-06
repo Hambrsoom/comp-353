@@ -22,14 +22,15 @@ function addPatient() {
     xmlhttp.send('firstName=' + firstName + '&lastName=' + lastName);
 }
 
-function addAppoitment() {
+function addAppointment() {
     xmlhttp = new XMLHttpRequest();
     const patientId = document.getElementById('select-patients').value;
     const dentistId = document.getElementById('select-dentists').value;
     const clinicId = document.getElementById('select-clinics').value;
     const date = document.getElementById('appoitment-date').value;
-    const time = document.getElementById('appoitment-time').value;
-    const cost = document.getElementById('cost').value;
+    const e = document.getElementById('appointment-time');
+    const time = e.options[e.selectedIndex].value
+    
 
     xmlhttp.open(
         'POST',
@@ -57,8 +58,6 @@ function addAppoitment() {
             '&dentistId=' +
             dentistId +
             '&clinicId=' +
-            clinicId +
-            '$cost=' +
-            cost
+            clinicId
     );
 }
