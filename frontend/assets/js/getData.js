@@ -4,6 +4,24 @@ function onLoad() {
     getSelectClinics();
     getSelectPatients();
     getSelectDentists();
+    getAppointments();
+}
+
+function getAppointments() {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(
+                'appointments-table'
+            ).innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/GetAppointmentsForTreatments.php',
+        true
+    );
+    xmlhttp.send();
 }
 
 //get dentists names
@@ -11,7 +29,7 @@ function getSelectDentists() {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            let res = JSON.parse(this.response);
+            let res = JSON.parse(this.response);            
 
             let optionsList = document.getElementById('select-dentists').options;
             let options = [];
@@ -209,17 +227,22 @@ function getMissedAppointments() {
     xmlhttp.send();
 }
 
-
-function getAllReceptionists(){
+function getTreatmentsForAppointments(appId) {
+    console.log(appId);
+    
     let xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById(
-                'get-all-receptionists'
+                'appointments-table'
             ).innerHTML = this.responseText;
         }
     };
-     xmlhttp.open('GET', '../../Backend/Controllers/QueryControllers/GetAllReceptionists.php', true);
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/QueryControllers/GetTreatmentsForAppointments.php?appId=' + appId,
+        true
+    );
     xmlhttp.send();
 }

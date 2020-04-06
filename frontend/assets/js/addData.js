@@ -5,7 +5,7 @@ function addPatient() {
     const lastName = document.getElementById('patient-last-name').value;
     xmlhttp.open(
         'POST',
-        '../../Backend/Controllers/AddControllers/AddAppointment.php'
+        '../../Backend/Controllers/AddControllers/AddPatient.php'
     );
     xmlhttp.setRequestHeader(
         'Content-type',
@@ -25,8 +25,6 @@ function addPatient() {
 function addAppoitment() {
     xmlhttp = new XMLHttpRequest();
     const patientId = document.getElementById('select-patients').value;
-    const phoneNumber = document.getElementById('phone').value;
-    const gender = document.getElementById('gender').value;
     const dentistId = document.getElementById('select-dentists').value;
     const clinicId = document.getElementById('select-clinics').value;
     const date = document.getElementById('appoitment-date').value;
