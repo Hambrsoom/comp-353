@@ -7,13 +7,13 @@
                 echo executeSelect($statement);
                 break;
             case 'INSERT':
-                echo executeDML($statement);
+                echo executeDML($statement,  $statementType);
                 break;
             case 'DELETE':
-                echo executeDML($statement);
+                echo executeDML($statement,  $statementType);
                 break;
             case 'UPDATE':
-                echo executeDML($statement);
+                echo executeDML($statement,  $statementType);
                 break;
             case 'ALTER':
                 echo executeDDL($statement, $statementType);
@@ -42,10 +42,15 @@
             return executeSelectStatement($sql);  
         }
 
-        function executeDML ($statement) {
+        function executeDML ($statement, $statementType) {
             $terms = explode(" ", $statement);
             $sql = $statement; 
-            $tableName =  $terms[2];
+            $tableName = '';
+            if( $statementType == 'UPDATE'){
+                $tableName =  $terms[1];
+            } else {
+                $tableName =  $terms[2];
+            }
 
             require('../Services/DbConnectionService.php');
 

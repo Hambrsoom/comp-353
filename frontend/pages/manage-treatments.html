@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Manage Treatments</title>
+        <link
+            href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../assets/css/normalize.css"
+        />
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+    </head>
+    <body>
+        <ul class="nav">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="queries.html">Queries</a></li>
+            <li><a href="manage-appointments.html">Manage Appointments</a></li>
+            <li><a href="manage-patients.html">Manage Patients</a></li>
+            <li><a class="active" href="#">Manage Treatments</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+        <div class="container">
+                <h2>Add Treatment</h2>
+                <div class="add-treatment-input">
+                    <div>
+                        <label for="name">Name</label>
+                        <input name="name" id = "name"> 
+                    </div>
+                    <div>
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="4" cols="100"></textarea>
+                    </div>
+                    <div>
+                        <label for="cost">Cost</label>
+                        <input id="cost" type="number" min="0"></input>
+                    </div>
+                    <button onclick="addTreatment()">Add Treatment</button>
+                    <div id="add-result"></div>
+                </div>
+                <h2>Modify Treatment</h2>
+                <div>
+
+                </div>
+        </div>
+
+        <script src="../assets/js/treatmentScript.js"></script>
+    </body>
+</html>
