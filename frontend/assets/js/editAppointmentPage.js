@@ -1,15 +1,17 @@
 window.onload = onLoad();
+const appId =localStorage['objectToPass'];
 
 function onLoad() {
     getSelectClinics();
     getSelectPatients();
     populateEditAppointmentPage();
+    getSelectTreatments();
 }
 
 
 function populateEditAppointmentPage(){
     var appId = localStorage['objectToPass'];
-    localStorage.removeItem( 'objectToPass' ); 
+    //localStorage.removeItem( 'objectToPass' ); 
     getAppointmentDetailsByAppId(appId);
 }
 
@@ -35,7 +37,9 @@ function getAppointmentDetailsByAppId(appId){
             document.getElementById("select-dentists").value = res[0].dentistID;
             document.getElementById("select-receptionists").value = res[0].receptionistID;
             document.getElementById("appoitment-date").value = res[0].date;
-            getDoctorAvailabilityforADate(res[0].dentistID, res[0].time);
+
+            //The value hasn't been passed correctly here:
+            getDoctorAvailabilityforADate(res[0].time);
             document.getElementById("appointment-time").value = res[0].time;
         }
     };
@@ -134,7 +138,43 @@ function getRecpetionistsByClinicID(clinicId){
     xmlhttp.send();
 }
 
+function getSelectTreatments() {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let res = JSON.parse(this.response);
 
+            let optionsList = document.getElementById('select-treatments').options;
+            let optionsList2 = null;
+            if(document.getElementById('select-treatments')){
+                optionsList2 = document.getElementById('select-treatments').options;
+            }
+            
+            let options = [];
+            res.forEach(treatment => {
+                options.push({
+                    text: treatment.name,
+                    value: treatment.treatmentID
+                });
+            });
+
+            options.forEach(option =>{
+                optionsList.add(
+                    new Option(option.text, option.value, option.selected)
+                );
+                if(optionsList2){
+                    optionsList2.add(
+                        new Option(option.text, option.value, option.selected)
+                    )
+                }
+                
+            }
+            );
+        }
+    };
+    xmlhttp.open('GET', '../../Backend/Controllers/GetSelectTreatment.php', true);
+    xmlhttp.send();
+}
 
 
 
@@ -214,11 +254,13 @@ function getSelectPatients() {
 }
 
 
-function getDoctorAvailabilityforADate(dentistId, appTime){
+function getDoctorAvailabilityforADate(appTime){
     let xmlhttp = new XMLHttpRequest();
     let date = document.getElementById('appoitment-date').value;
+    let dentistId =document.getElementById('select-dentists').value;
 
     console.log("date: "+ date);
+    console.log("Time: "+ appTime);
     console.log("dentist: "+ dentistId);
 
     xmlhttp.onreadystatechange = function() {
@@ -278,4 +320,79 @@ function checkIfDoctorHasAppointment(doctorAvailabilities, time){
         }     
     });
     return bool;
+}
+
+
+
+function editAppointment() {
+    xmlhttp = new XMLHttpRequest();
+    const patientId = document.getElementById('select-patients').value;
+    const dentistId = document.getElementById('select-dentists').value;
+    const clinicId = document.getElementById('select-clinics').value;
+    const receptionitId  = document.getElementById('select-receptionists').value;
+    const date = document.getElementById('appoitment-date').value;
+    const time = document.getElementById('appointment-time').value;
+   // const time = e.options[e.selectedIndex].value;
+    console.log("receptionist: " + receptionitId);
+    console.log("patient: "+ patientId);
+    console.log("dentisTId " + dentistId);
+    console.log("clinicId "+ clinicId);
+    console.log("date: "+ date);
+    console.log("time: "+ time);
+    console.log("appId: "+ appId);
+    
+
+    xmlhttp.open(
+        'POST',
+        '../../Backend/Controllers/UpdateControllers/updateAppointment.php'
+    );
+    xmlhttp.setRequestHeader(
+        'Content-type',
+        'application/x-www-form-urlencoded'
+    );
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            document.getElementById(
+                'edit-appointment-res'
+            ).innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.send(
+        'appId='
+        +appId+
+        '&patientId=' +
+        patientId +
+        '&date=' +
+        date +
+        '&time=' +
+        time +
+        '&dentistId=' +
+        dentistId +
+        '&receptionitId='+
+        receptionitId +
+        '&clinicId=' +
+        clinicId
+    );
+}
+
+
+
+function showTreatmentsOfAppointment(){
+        let xmlhttp = new XMLHttpRequest();
+        console.log("appId"+ appId);
+        
+        xmlhttp.open(
+            'GET',
+            '../../Backend/Controllers/QueryControllers/GetAllTreatmentsForAppointment.php?appId=' +appId, 
+            true
+        );
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(
+                    'get-treatments-appointments'
+                ).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.send();
 }

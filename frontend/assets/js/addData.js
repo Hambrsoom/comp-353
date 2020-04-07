@@ -30,6 +30,7 @@ function addAppointment() {
     const date = document.getElementById('appoitment-date').value;
     const e = document.getElementById('appointment-time');
     const time = e.options[e.selectedIndex].value
+
     
 
     xmlhttp.open(
