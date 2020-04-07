@@ -36,16 +36,6 @@
                             </div>
                     </div>
                     <div>
-                        <label for="date">Date:</label>
-                        <input 
-                            type="date"
-                            id="appoitment-date"
-                            name="appoitment-date"
-                        />
-                        <label for="time">Time:</label>
-                        <select name="time" id="appointment-time"></select>
-                    </div>
-                    <div>
                         <label for="fname">Clinic:</label>
                         <div class="select-button">
                             <div id="select-clinics-container">
@@ -71,6 +61,21 @@
                                         <select name="" id="select-receptionists"></select>
                                 </div>
                             </div>
+                        </div>
+                        <div>
+                            <label for="date">Date:</label>
+                            <input 
+                                type="date"
+                                id="appoitment-date"
+                                name="appoitment-date"
+                            />
+                            <button onclick="getDoctorAvailabilityforADate()">
+                                Choose Time
+                            </button>
+                        </div>
+                        <div>
+                            <label for="time">Time:</label>
+                            <select name="time" id="appointment-time"></select>
                         </div>
                     </div>
 

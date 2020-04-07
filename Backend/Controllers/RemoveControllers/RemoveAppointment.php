@@ -3,7 +3,9 @@
 
     $appID = $_POST['appId'];
 
-    $sql = "DELETE FROM appointments WHERE appointmentsID = '".$appID."';"; 
+    $sql = "DELETE FROM bills, appointments 
+    USING bills, appointments
+    WHERE appointments.appointmentsID = '".$appID."' AND appointments.billID = bills.billID;"; 
 
     if ($con->query($sql)){
         echo 'Appointment deleted successfully';

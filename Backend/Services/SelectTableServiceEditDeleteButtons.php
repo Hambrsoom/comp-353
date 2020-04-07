@@ -6,7 +6,7 @@
         $output = 'Result not found';
         if ($result = $con->query($sql)) {
     
-            require('FormatTableServiceEditDeleteButtons.php');
+            require('FormatTableServiceWithDeleteButtons.php');
     
             $output = outputTable($result);
     
