@@ -145,10 +145,6 @@ function getSelectTreatments() {
             let res = JSON.parse(this.response);
 
             let optionsList = document.getElementById('select-treatments').options;
-            let optionsList2 = null;
-            if(document.getElementById('select-treatments')){
-                optionsList2 = document.getElementById('select-treatments').options;
-            }
             
             let options = [];
             res.forEach(treatment => {
@@ -162,12 +158,6 @@ function getSelectTreatments() {
                 optionsList.add(
                     new Option(option.text, option.value, option.selected)
                 );
-                if(optionsList2){
-                    optionsList2.add(
-                        new Option(option.text, option.value, option.selected)
-                    )
-                }
-                
             }
             );
         }
@@ -384,15 +374,61 @@ function showTreatmentsOfAppointment(){
         
         xmlhttp.open(
             'GET',
-            '../../Backend/Controllers/QueryControllers/GetAllTreatmentsForAppointment.php?appId=' +appId, 
+            '../../Backend/Controllers/QueryControllers/GetTreatmentForAnAppointment.php?appId=' +appId, 
             true
         );
+        xmlhttp.setRequestHeader(
+            'Content-type',
+            'application/x-www-form-urlencoded'
+        );
+    
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById(
-                    'get-treatments-appointments'
-                ).innerHTML = this.responseText;
+                let res = JSON.parse(this.response);
+                let html = ''
+                res.forEach(element => {
+                    const span  = '<span>' + element['treatment_name'] + '</span> <button onclick="removeTreatmentFromAppointment('+element['treatment_id']+')"> Remove </button>';
+                    html += span;
+                });
+                document.getElementById('get-treatments-appointments').innerHTML = html;
             }
         };
         xmlhttp.send();
+}
+
+function removeTreatmentFromAppointment(treatmentId){
+    console.log(treatmentId);
+    console.log(appId);
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/RemoveControllers/RemoveTreatmentFromAppointment.php?appId=' + appId + '&treatmentId=' + treatmentId, true
+    );
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('treatment-results').innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.send();
+}
+
+function addTreatmentToAppointment() {
+    const select = document.getElementById('select-treatments');
+    const treatmentId = select.options[select.selectedIndex].value;
+
+
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.open(
+        'GET',
+        '../../Backend/Controllers/AddControllers/addTreatmentToAppointment.php?appId=' + appId + '&treatmentId=' + treatmentId, true
+    );
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('treatment-results').innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.send();
+
 }
