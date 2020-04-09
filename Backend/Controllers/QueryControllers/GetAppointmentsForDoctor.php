@@ -20,6 +20,6 @@
     patients as p,
     clinics as c,
     receptionists as r
-    WHERE app.dentistID = '".$dentistID."' AND week(app.date) = '".$date."' AND app.dentistID = den.dentistID AND p.patientID = app.patientID AND r.receptionistsID = app.receptionistID AND c.clinicID = app.clinicID;";
+    WHERE app.dentistID = '".$dentistID."' AND week(app.date, 1) = '".$date."' AND app.dentistID = den.dentistID AND p.patientID = app.patientID AND r.receptionistsID = app.receptionistID AND c.clinicID = app.clinicID;";
     echo executeSelectStatement($sql);  
 ?>
