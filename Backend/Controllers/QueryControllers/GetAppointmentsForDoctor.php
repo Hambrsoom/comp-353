@@ -13,7 +13,7 @@
     concat('Dr. ', den.firstName,' ', den.lastName) as `Dentist's Name`,
     concat(r.firstName,' ', r.lastName) as `Receptionist's Name`,
     c.clinicName as `Clinic Name`,
-    C.address as `Clinic Address`
+    c.address as `Clinic Address`
     FROM 
     appointments as app,
     dentists as den,
