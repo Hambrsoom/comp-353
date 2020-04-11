@@ -5,7 +5,7 @@ function addPatient() {
     const lastName = document.getElementById('patient-last-name').value;
     xmlhttp.open(
         'POST',
-        '../../Backend/Controllers/AddControllers/AddPatient.php'
+        '../../Backend/Controllers/AddControllers/addPatient.php'
     );
     xmlhttp.setRequestHeader(
         'Content-type',
@@ -35,7 +35,7 @@ function addAppointment() {
 
     xmlhttp.open(
         'POST',
-        '../../Backend/Controllers/AddControllers/AddAppointment.php'
+        '../../Backend/Controllers/AddControllers/addAppointment.php'
     );
     xmlhttp.setRequestHeader(
         'Content-type',
